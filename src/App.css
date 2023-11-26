@@ -1,0 +1,126 @@
+/* write your css here */
+
+html,
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal{
+    overflow: hidden;
+}
+
+.homepage_bg {
+    background: url("../src/assets/Images/bghome.svg");
+}
+
+.custom-highligter {
+    background: var(--gradient-10, linear-gradient(118deg, #5433FF -4%, #20BDFF 51.26%, #A5FECB 106.52%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.custom-highlighter {
+    background: var(--gradient-10, linear-gradient(118deg, #5433FF -4%, #20BDFF 51.26%, #A5FECB 106.52%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.custom-text-blue {
+    background: var(--gradient-05, linear-gradient(118deg, #1FA2FF -3.62%, #12D8FA 50.44%, #A6FFCB 104.51%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.custom-text-yellow {
+    background: var(--gradient-06, linear-gradient(118deg, #FF512F -4.8%, #F09819 107.46%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.custom-text-orange {
+    background: var(--gradient-08, linear-gradient(118deg, #E65C00 -6.05%, #F9D423 106.11%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.custom-text-red {
+    background: var(--gradient-04, linear-gradient(118deg, #833AB4 -2.4%, #FD1D1D 52.25%, #FCB045 106.89%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.custom-shadow-red {
+    width: 372.949px;
+    height: 257.054px;
+    position: absolute;
+    left: -3.2px;
+    top: -5px;
+    border-radius: 372.949px;
+    opacity: 0.2;
+    background: var(--gradient-09, linear-gradient(118deg, #EC008C -0.91%, #FC6767 104.91%));
+    filter: blur(34px);
+}
+
+/* .custom-loader {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 8px solid #0000;
+    border-right-color: #766DF497;
+    position: relative;
+    animation: s4 1s infinite linear;
+}
+
+.custom-loader:before,
+.custom-loader:after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: inherit;
+    animation: inherit;
+    animation-duration: 2s;
+}
+
+.custom-loader:after {
+    animation-duration: 4s;
+} */
+
+.custom-loader {
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    border:8px solid;
+    border-color:#2C333F;
+    border-right-color: #FFD60A;
+    animation:s2 1s infinite linear;
+  }
+  @keyframes s2 {to{transform: rotate(1turn)}}
+
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+}

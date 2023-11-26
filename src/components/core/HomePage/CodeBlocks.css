@@ -1,0 +1,30 @@
+.blur-custom {
+    -webkit-box-shadow: -48px -40px 208px -62px rgba(0, 0, 255, 1);
+    -moz-box-shadow: -48px -40px 208px -62px rgba(0, 0, 255, 1);
+    box-shadow: -48px -40px 208px -62px rgba(0, 0, 255, 1);
+
+    -webkit-box-shadow: inset 69px 97px 155px -200px rgba(0, 0, 255, 1);
+    -moz-box-shadow: inset 69px 97px 155px -200px rgba(0, 0, 255, 1);
+    box-shadow: inset 69px 97px 155px -200px rgba(0, 0, 255, 1);
+
+}
+
+.shadow-custom {
+    -webkit-box-shadow: 16px 16px 0px 0px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 16px 16px 0px 0px rgba(255, 255, 255, 1);
+    box-shadow: 16px 16px 0px 0px rgba(255, 255, 255, 1);
+}
+
+.custom-bg-blue {
+    border-radius: 372.949px;
+    opacity: 0.2;
+    background: var(--gradient-05, linear-gradient(118deg, #1FA2FF -3.62%, #12D8FA 50.44%, #A6FFCB 104.51%));
+    filter: blur(34px);
+}
+
+.custom-bg-org {
+    border-radius: 372.949px;
+    opacity: 0.2;
+    background: var(--gradient-02, linear-gradient(124deg, #8A2BE2 -6.46%, #FFA500 59.04%, #F8F8FF 124.53%));
+    filter: blur(34px);
+}

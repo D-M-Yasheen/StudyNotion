@@ -1,0 +1,5 @@
+.custom-yellow-shadow {
+    -webkit-box-shadow: 16px 16px 0px 0px #FFD60A;
+    -moz-box-shadow: 16px 16px 0px 0px #FFD60A;
+    box-shadow: 16px 16px 0px 0px #FFD60A;   
+}
