@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const mailSender = require("../utils/mailSender");
 const crypto = require("crypto");
 const { resetPasswordEmail } = require("../mail/templates/resetPasswordEmail")
+require("dotenv").config();
 
 
 exports.resetPasswordToken = async (req, rest) => {
@@ -27,7 +28,8 @@ exports.resetPasswordToken = async (req, rest) => {
 
         const urlToken = crypto.randomUUID();
 
-        const url = `http://localhost:3000/update-password/${urlToken}`;
+        // const url = `http://localhost:3000/update-password/${urlToken}`;
+        const url = `https://studynotion-edtech-project.vercel.app/update-password/${token}`
 
         const userUpdate = await User.findOneAndUpdate(
             { email },
