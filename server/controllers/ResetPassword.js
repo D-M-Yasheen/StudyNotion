@@ -30,7 +30,7 @@ exports.resetPasswordToken = async (req, rest) => {
 
         // const url = `http://localhost:3000/update-password/${urlToken}`;
         // const url = `https://studynotion-edtech-project.vercel.app/update-password/${token}`
-        const url = `${process.env.UPDATE_PASSWORD}${token}`
+        const url = `${process.env.UPDATE_PASSWORD}${urlToken}`
 
 
         const userUpdate = await User.findOneAndUpdate(
