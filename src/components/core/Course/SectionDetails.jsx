@@ -11,8 +11,6 @@ export const SectionDetails = ({
     setAllActiveSections,
     handleAllActiveSection }) => {
 
-    // example
-
     // console.log("sectio id : ", sectionDetails._id)
     // const contentEl = useRef(null)
 

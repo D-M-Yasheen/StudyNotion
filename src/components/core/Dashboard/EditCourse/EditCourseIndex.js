@@ -50,7 +50,7 @@ export const EditCourseIndex = () => {
                 <div className='pl-[222px] fixed inset-0 z-[5] !mt-0 grid h-screen
                     w-screen place-items-center overflow-auto bg-transparent'>
 
-                    <div className='w-10/12 mx-auto flex flex-col gap-10 my-24'>
+                    <div className='w-11/12 mx-auto flex flex-col gap-10 my-24'>
 
                         {/* Heading */}
                         <div className='py-6 flex gap-3 justify-between'>

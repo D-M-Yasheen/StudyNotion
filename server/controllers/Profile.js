@@ -186,19 +186,28 @@ exports.changeUserPassword = async (req, res) => {
         const { currentPassword, confirmPassword, newPassword } = req.body;
 
         const userDetails = await User.findById({ _id: userId })
+        
+
+        if (newPassword !== confirmPassword) {
+            return res.status(300).json({
+                success: false,
+                message: "New password and confirm password must be match"
+            })
+        }
+
+
+        if (newPassword === currentPassword) {
+            return res.status(300).json({
+                success: false,
+                message: "Current and New password should not be same"
+            })
+        }
 
 
         if (!await bcrypt.compare(currentPassword, userDetails.password)) {
             return res.status(300).json({
                 success: false,
-                message: "Entered wrong current password"
-            })
-        }
-
-        if (currentPassword !== confirmPassword) {
-            return res.status(300).json({
-                success: false,
-                message: "Confirm password not matched"
+                message: "Current password is wrong"
             })
         }
 

@@ -97,14 +97,14 @@ export const LoginForm = () => {
                             {showPassword ?
 
                                 <div className='text-richblack-300 absolute right-3 
-                                                top-[50%] -translate-y-[50%]'
+                                                top-[50%] -translate-y-[50%] bg-richblack-700'
                                     onClick={() => setShowPassword(false)}>
 
                                     <AiOutlineEyeInvisible fontSize={24} />
 
                                 </div>
                                 :
-                                <div className='text-richblack-300 absolute 
+                                <div className='text-richblack-300 absolute bg-richblack-700
                                                 right-3 top-[50%] -translate-y-[50%]'
                                     onClick={() => setShowPassword(true)}>
 

@@ -28,7 +28,7 @@ export const Cart = () => {
                     <div className='custom-loader'></div>
                 </div>
                 :
-                <div className='w-10/12 mx-auto flex flex-col gap-10 my-10'>
+                <div className='w-11/12 mx-auto flex flex-col gap-10 my-10'>
 
                     {/* Heading */}
                     <div className='flex gap-2 justify-between py-6'>
