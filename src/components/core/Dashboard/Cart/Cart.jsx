@@ -125,8 +125,6 @@ export const Cart = () => {
                         }
 
                     </>
-
-
                 </div>
         }
         </>

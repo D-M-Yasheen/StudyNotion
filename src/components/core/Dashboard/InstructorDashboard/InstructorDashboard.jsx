@@ -91,9 +91,6 @@ export const InstructorDashboard = () => {
 
                                 <PiHandWavingFill fontSize={20} className='text-yellow-50' />
 
-                                {/* <img
-                            src={WavingHand}
-                            className='text-yellow-50 w-10 aspect-square' /> */}
                             </h1>
 
                             <p className=' text-richblack-100 text-sm'>

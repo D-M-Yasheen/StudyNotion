@@ -51,7 +51,6 @@ export const AddCourseSteps = () => {
                                                     {item.id}
 
                                                 </div>
-
                                         }
                                     </>
 
@@ -91,21 +90,13 @@ export const AddCourseSteps = () => {
                             <div key={item.id}
                                 className='flex w-full justify-center items-center'>
 
-                                <div className={`flex gap-2
-                                                items-center justify-center`}>
-                                    
-
+                                <div className={`flex gap-2 items-center justify-center`}>
                                     <p className={` text-sm ${item.id <= stepNumber ? 'text-yellow-100'
                                         : 'text-richblack-5'}`}>
                                         {item.title}
                                     </p>
-
                                 </div>
-
-
-
                             </div>
-
                         )
                     ))
                 }

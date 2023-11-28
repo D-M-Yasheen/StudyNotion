@@ -3,12 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import { useEffect } from 'react';
 import { fetchAllReviewAndRatings } from '../../services/operations/courseAPI';
 import { useState } from 'react';
-// import { Autoplay, FreeMode, Pagination } from "swiper"
-
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';

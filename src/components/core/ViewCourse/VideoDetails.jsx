@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import '~video-react/styles/scss/video-react';
 import { Player } from 'video-react';
-import { BsChevronRight, BsChevronLeft } from 'react-icons/bs';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa6';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

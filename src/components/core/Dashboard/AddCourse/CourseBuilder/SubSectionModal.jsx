@@ -7,7 +7,6 @@ import { createSubSection, updateSubSection } from '../../../../../services/oper
 import { setCourse } from '../../../../../slices/courseSlice';
 import { CourseThumbnail } from '../CourseInfo/CourseThumbnail';
 import IconBtn from "../../../../common/IconBtn"
-import ReactDOM from 'react-dom';
 
 export const SubSectionModal = ({
   modalData,

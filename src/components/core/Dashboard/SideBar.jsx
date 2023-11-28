@@ -3,10 +3,10 @@ import { sidebarLinks } from "../../../data/dashboard-links"
 import { SideBarLink } from './SideBarLink'
 import { useDispatch, useSelector } from 'react-redux'
 import { VscSignOut } from 'react-icons/vsc'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Modal } from '../../common/Modal'
 import { logout } from '../../../services/operations/authAPI'
-import { HiChevronDoubleRight, HiChevronDoubleLeft, HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 
 export const SideBar = ({ showSideBar, setShowSideBar }) => {
@@ -31,14 +31,12 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
                                 <HiChevronRight className='translate-x-9' />
                                 <HiChevronRight className='translate-x-5' />
                                 <HiChevronRight className='translate-x-1' />
-                                {/* <HiChevronDoubleRight /> */}
                             </div>
                             :
                             <div className='flex'>
-                                <HiChevronLeft className='translate-x-8'/>
-                                <HiChevronLeft className='translate-x-4'/>
-                                <HiChevronLeft className='translate-x-0'/>
-                                {/* <HiChevronDoubleLeft  /> */}
+                                <HiChevronLeft className='translate-x-8' />
+                                <HiChevronLeft className='translate-x-4' />
+                                <HiChevronLeft className='translate-x-0' />
                             </div>
                     }
 
@@ -72,11 +70,7 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
                 } showSideBar={showSideBar} />
 
 
-                <div
-                    // className='w-full text-richblack-300 border-l-4
-                    //  border-richblack-800 flex px-6 py-2 justify-center 
-                    //  items-center gap-3 cursor-pointer select-none '
-                    className={`w-full text-richblack-300 flex gap-3 px-3 py-2 cursor-pointer
+                <div className={`w-full text-richblack-300 flex gap-3 px-3 py-2 cursor-pointer
                      select-none transition-all duration-200 border-l-4 border-richblack-800 `}
                     onClick={() => setShowModal({
                         text1: "Are You Sure?",
@@ -103,7 +97,6 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
                 </div>
 
             </div>
-
 
             {
                 (showModal !== null) && <Modal modalData={showModal} type={"logout"} />

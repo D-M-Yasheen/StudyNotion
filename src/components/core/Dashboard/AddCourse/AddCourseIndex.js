@@ -4,9 +4,6 @@ import { CourseTips } from './CourseTips'
 
 
 export const AddCourseIndex = () => {
-
-  
-
   return (
 
     <div className='w-11/12 mx-auto flex flex-col gap-10 my-10'>

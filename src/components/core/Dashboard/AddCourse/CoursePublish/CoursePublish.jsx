@@ -83,30 +83,13 @@ export const CoursePublish = () => {
                     className='flex flex-col gap-6'>
 
                     <label htmlFor='public'
-                        className='flex w-fit gap-2 items-center'
-                    // onClick={() => setCheck((prev) => !prev)}
-                    >
+                        className='flex w-fit gap-2 items-center'>
                         <input
                             type='checkbox'
                             id='public'
                             {...register("public")}
                             className='text-richblack-400 w-4 h-4'
                         />
-
-                        {/* <div>
-                        {check ?
-
-                            <MdCheckBox fontSize={20}
-                                className=' rounded-lg text-yellow-50'
-                            />
-
-                            :
-
-                            <MdCheckBoxOutlineBlank fontSize={20}
-                                className='text-richblack-400 rounded-lg '
-                            />
-                        }
-                    </div> */}
 
                         <span
                             className=' select-none text-base text-richblack-400 font-medium'>

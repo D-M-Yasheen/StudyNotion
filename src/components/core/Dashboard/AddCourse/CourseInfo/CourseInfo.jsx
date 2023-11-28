@@ -4,7 +4,6 @@ import { CourseTag } from './CourseTag';
 import { CourseThumbnail } from './CourseThumbnail';
 import { CourseRequirement } from './CourseRequirement';
 import { AiOutlineRight } from 'react-icons/ai';
-import { BiRupee } from 'react-icons/bi';
 import { HiOutlineCurrencyRupee } from 'react-icons/hi';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -270,10 +269,6 @@ export const CourseInfo = () => {
                             </span>
                         }
                         <div className='absolute top-[54%] left-3'>
-                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="22"
-                                height="22" viewBox="0 0 22 22" fill="none">
-                                <path d="M13.75 7.5625L8.25 7.5625M13.75 10.3125H8.25M11 15.8125L8.25 13.0625H9.625C11.1438 13.0625 12.375 11.8313 12.375 10.3125C12.375 8.79372 11.1438 7.5625 9.625 7.5625M19.25 11C19.25 15.5563 15.5563 19.25 11 19.25C6.44365 19.25 2.75 15.5563 2.75 11C2.75 6.44365 6.44365 2.75 11 2.75C15.5563 2.75 19.25 6.44365 19.25 11Z" stroke="#585D69" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg> */}
                             <HiOutlineCurrencyRupee fontSize={20} className='text-richblack-500'/>
                         </div>
                     </label>
