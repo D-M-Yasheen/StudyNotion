@@ -27,7 +27,8 @@ export const SideBarLink = ({ element, flag, showSideBar }) => {
 
         </div>
 
-        <div className={`${showSideBar ? `w-full text-ellipsis whitespace-nowrap text-start`: 'hidden'}`}>
+        <div className={`${showSideBar ? `w-full text-ellipsis whitespace-nowrap
+         text-start`: 'hidden'}`}>
 
           {element.name}
 

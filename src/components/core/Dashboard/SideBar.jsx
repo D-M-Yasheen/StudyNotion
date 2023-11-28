@@ -6,7 +6,7 @@ import { VscSignOut } from 'react-icons/vsc'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { Modal } from '../../common/Modal'
 import { logout } from '../../../services/operations/authAPI'
-import { RxDoubleArrowRight, RxDoubleArrowLeft } from "react-icons/rx";
+import { HiChevronDoubleRight, HiChevronDoubleLeft, HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 
 export const SideBar = ({ showSideBar, setShowSideBar }) => {
@@ -20,21 +20,26 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
         flex flex-col items-start gap-3 py-6 `}>
 
             <div className='w-full flex justify-end'>
-                <button className={`w-fit text-richblack-5 flex justify-end items-center 
-                            px-3 py-4 cursor-pointer select-none transition-all duration-200
-                            font-extrabold`}
+                <button className={`w-fit flex justify-end items-center px-3 py-4 
+                            cursor-pointer select-none transition-all duration-500
+                            font-extrabold text-blue-100 text-2xl animate-trans-right
+                            `}
                     onClick={() => setShowSideBar((prev) => !prev)}>
                     {
                         !showSideBar ?
-                            <>
-                                <RxDoubleArrowRight fontSize={20} />
-
-                            </>
+                            <div className='flex'>
+                                <HiChevronRight className='translate-x-9' />
+                                <HiChevronRight className='translate-x-5' />
+                                <HiChevronRight className='translate-x-1' />
+                                {/* <HiChevronDoubleRight /> */}
+                            </div>
                             :
-                            <>
-                                <RxDoubleArrowLeft fontSize={20} />
-
-                            </>
+                            <div className='flex'>
+                                <HiChevronLeft className='translate-x-8'/>
+                                <HiChevronLeft className='translate-x-4'/>
+                                <HiChevronLeft className='translate-x-0'/>
+                                {/* <HiChevronDoubleLeft  /> */}
+                            </div>
                     }
 
                 </button>
