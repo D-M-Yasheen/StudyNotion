@@ -127,7 +127,16 @@ module.exports = {
     extend: {
       maxWidth: {
         maxContent: "1260px",
-        maxContentTab: "650px"
+        maxContentTab: "650px",
+      },
+      keyframes: {
+        "trans-right": {
+          '0%, 100%': { transform: 'translateX(5px)' },
+          '50%': { transform: 'translateX(-5px)' },
+        }
+      },
+      animation: {
+        "trans-right": 'trans-right 2s ease-in-out infinite',
       },
     },
   },
