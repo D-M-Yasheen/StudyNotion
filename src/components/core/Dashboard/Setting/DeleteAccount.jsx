@@ -27,7 +27,7 @@ export const DeleteAccount = () => {
         try {
           dispatch(deleteProfile(token, navigate))
         } catch (error) {
-          console.log("ERROR MESSAGE - ", error.message)
+        //   console.log("ERROR MESSAGE - ", error.message)
         }
       }
 

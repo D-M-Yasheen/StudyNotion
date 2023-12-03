@@ -6,20 +6,18 @@ import { useEffect } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import IconBtn from './IconBtn';
 import { createRating } from '../../services/operations/courseAPI';
-import { useParams } from 'react-router-dom';
+
 
 export const ReviewModal = ({ setReviewModal }) => {
 
-    const { register, reset, setValue, getValues, handleSubmit, formState: { errors } } = useForm()
+    const { register, setValue, handleSubmit, formState: { errors } } = useForm()
     const { token } = useSelector((state) => state.auth)
     const { user } = useSelector((state) => state.profile)
     const { courseEntireData } = useSelector((state) => state.viewCourse)
 
-    const { courseId } = useParams();
-
     const onSubmit = async (data) => {
-        console.log("review value : ", data.courseReview)
-        console.log("rating value : ", data.courseRating)
+        // console.log("review value : ", data.courseReview)
+        // console.log("rating value : ", data.courseRating)
 
         if (token) {
 
@@ -30,7 +28,7 @@ export const ReviewModal = ({ setReviewModal }) => {
 
             }, token)
 
-            console.log("rating result ", result)
+            // console.log("rating result ", result)
 
         }
 

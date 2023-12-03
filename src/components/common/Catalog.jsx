@@ -1,25 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md"
+import React, { useEffect, useState } from 'react'
+import { MdKeyboardArrowDown } from "react-icons/md"
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { fetchCourseCategories } from '../../services/operations/courseAPI';
 
 
 export const Catalog = () => {
-
-    
     const [catalogData, setCatalogData] = useState([])
-
-    const dispatch = useDispatch();
-
-
     const catalogHandler = async () => {
         try {
             const result = await fetchCourseCategories();
             setCatalogData(result)
 
         } catch (error) {
-            console.log("Error occurred while fetching catalog data : ", error)
+            // console.log("Error occurred while fetching catalog data : ", error)
         }
     }
 

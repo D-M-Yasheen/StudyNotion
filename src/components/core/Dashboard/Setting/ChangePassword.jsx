@@ -7,7 +7,7 @@ import { changePassword } from '../../../../services/operations/settingAPI';
 
 export const ChangePassword = () => {
 
-    const { user } = useSelector((state) => state.profile);
+    // const { user } = useSelector((state) => state.profile);
     const [showCurrentPassword, setShowCurrentPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
@@ -30,7 +30,7 @@ export const ChangePassword = () => {
             reset();
 
         } catch (error) {
-            console.log("Error occurred while updating the password : ", error.message)
+            // console.log("Error occurred while updating the password : ", error.message)
         }
     }
 

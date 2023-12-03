@@ -37,7 +37,7 @@ export const ProfileImgChange = () => {
                 reset();
             })
         } catch (error) {
-            console.log("ERROR MESSAGE - ", error.message)
+            // console.log("ERROR MESSAGE - ", error.message)
         }
     }
 

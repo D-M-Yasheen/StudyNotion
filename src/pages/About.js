@@ -5,11 +5,6 @@ import { AboutSection2 } from '../components/core/AboutPage/AboutSection2'
 import { AboutSection3 } from '../components/core/AboutPage/AboutSection3'
 import { AboutStat } from '../components/core/AboutPage/AboutStat'
 import { LearningGrid } from '../components/core/AboutPage/LearningGrid'
-
-import { HighLightText } from '../components/common/HighLightText'
-import aboutus1 from "../assets/Images/aboutus1.webp"
-import aboutus2 from "../assets/Images/aboutus2.webp"
-import aboutus3 from "../assets/Images/aboutus3.webp"
 import { Footer } from '../components/common/Footer'
 import { ContactUsSection } from '../components/core/AboutPage/ContactUsSection'
 import { ReviewSlider } from '../components/common/ReviewSlider'

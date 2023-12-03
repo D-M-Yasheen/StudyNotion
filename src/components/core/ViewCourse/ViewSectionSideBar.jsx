@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { IoIosArrowDown, IoIosArrowUp, IoIosArrowForward } from 'react-icons/io'
+import { useLocation, useParams } from 'react-router-dom'
+import { IoIosArrowForward } from 'react-icons/io'
 import { useSelector } from 'react-redux'
 import { ViewSubSectionSideBar } from './ViewSubSectionSideBar'
 
@@ -9,7 +9,6 @@ export const ViewSectionSideBar = () => {
 
     const location = useLocation()
     const { sectionId } = useParams()
-    const { subSectionId } = useParams()
     const [activeStatus, setActiveStatus] = useState(null)
     const [allActiveSections, setAllActiveSections] = useState([])
 
@@ -20,19 +19,17 @@ export const ViewSectionSideBar = () => {
             allActiveSections.filter((i) => i !== id) :
             [...allActiveSections, id])
 
-        console.log("All Active Section : ", allActiveSections)
+        // console.log("All Active Section : ", allActiveSections)
     }
 
     const {
         courseEntireData,
-        courseSectionData,
-        // completedLectures,
-        // totalNoOfLectures
+        courseSectionData
     } = useSelector((state) => state.viewCourse)
 
-    const handleActiveStatus = (id) => {
-        activeStatus?.includes(id) ? setActiveStatus(null) : setActiveStatus(id)
-    }
+    // const handleActiveStatus = (id) => {
+    //     activeStatus?.includes(id) ? setActiveStatus(null) : setActiveStatus(id)
+    // }
 
 
     useEffect(() => {

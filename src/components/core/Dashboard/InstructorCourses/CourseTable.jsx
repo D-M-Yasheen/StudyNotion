@@ -5,7 +5,7 @@ import { AiFillCheckCircle, AiFillClockCircle } from 'react-icons/ai'
 import { BiRupee } from 'react-icons/bi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { MdEdit } from 'react-icons/md'
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { Modal } from '../../../common/Modal';
 import { deleteCourse, fetchInstructorCourses } from '../../../../services/operations/courseAPI';
 import { useNavigate } from 'react-router-dom';

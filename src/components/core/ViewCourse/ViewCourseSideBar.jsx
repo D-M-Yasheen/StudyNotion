@@ -11,7 +11,6 @@ export const ViewCourseSideBar = ({setReviewModal}) => {
     
     const {
         courseEntireData,
-        // courseSectionData,
         completedLectures,
         totalNoOfLectures
     } = useSelector((state) => state.viewCourse)

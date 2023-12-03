@@ -1,8 +1,7 @@
 import React from 'react'
-import { BsCheckCircleFill, BsDash } from 'react-icons/bs'
-import { useDispatch, useSelector } from 'react-redux'
+import { BsCheckCircleFill } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 import { CourseInfo } from './CourseInfo/CourseInfo';
-import { VscDash } from 'react-icons/vsc';
 import { CourseBuilder } from './CourseBuilder/CourseBuilder';
 import { CoursePublish } from './CoursePublish/CoursePublish';
 
@@ -51,6 +50,7 @@ export const AddCourseSteps = () => {
                                                     {item.id}
 
                                                 </div>
+
                                         }
                                     </>
 
@@ -90,13 +90,21 @@ export const AddCourseSteps = () => {
                             <div key={item.id}
                                 className='flex w-full justify-center items-center'>
 
-                                <div className={`flex gap-2 items-center justify-center`}>
+                                <div className={`flex gap-2
+                                                items-center justify-center`}>
+                                    
+
                                     <p className={` text-sm ${item.id <= stepNumber ? 'text-yellow-100'
                                         : 'text-richblack-5'}`}>
                                         {item.title}
                                     </p>
+
                                 </div>
+
+
+
                             </div>
+
                         )
                     ))
                 }

@@ -21,13 +21,13 @@ export const ProfileInfoChange = () => {
     } = useForm();
 
     const infoUpdateHandler = (data) => {
-        console.log("change info setting/profilechange : ", data)
+        // console.log("change info setting/profilechange : ", data)
         try {
             dispatch(updateUserInfo(token, data));
        
 
         } catch (error) {
-            console.log("Error occured : ", error.message)
+            // console.log("Error occured : ", error.message)
         }
     }
 

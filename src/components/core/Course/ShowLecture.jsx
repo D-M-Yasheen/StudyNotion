@@ -26,7 +26,7 @@ export const ShowLecture = ({ courseContent }) => {
             allActiveSections.filter((i) => i !== id) :
             [...allActiveSections, id])
 
-        console.log("All Active Section : ", allActiveSections)
+        // console.log("All Active Section : ", allActiveSections)
     }
 
 

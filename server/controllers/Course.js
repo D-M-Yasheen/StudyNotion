@@ -160,7 +160,7 @@ exports.editCourse = async (req, res) => {
 
         // If Thumbnail Image is found, update it
         if (req.files) {
-            console.log("thumbnail update")
+            // console.log("thumbnail update")
             const thumbnail = req.files.thumbnailImage
             const thumbnailImage = await uploadImageToCloudinary(
                 thumbnail,
@@ -338,7 +338,7 @@ exports.getFullCourseDetails = async (req, res) => {
             userId: userId
         })
 
-        console.log("courseProgressCount : ", courseProgressCount)
+        // console.log("courseProgressCount : ", courseProgressCount)
 
         if (!courseDetails) {
             return res.status(400).json({
@@ -425,7 +425,7 @@ exports.deleteCourse = async (req, res) => {
 
             sectionDetails.subSection.forEach(async (id) => {
 
-                console.log(id)
+                // console.log(id)
                 const deleteAllSubSection = await SubSection.findByIdAndDelete({ _id: id })
             })
 

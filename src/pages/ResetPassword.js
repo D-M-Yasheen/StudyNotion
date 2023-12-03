@@ -13,7 +13,7 @@ export const ResetPassword = () => {
     const [email, setEmail] = useState("");
 
     function submitHandler(event) {
-        console.log(email)
+        // console.log(email)
         dispatch(sendResetPasswordEmail(email, setMailSend));
 
     }

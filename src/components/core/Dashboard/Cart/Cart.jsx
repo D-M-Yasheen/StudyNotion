@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { CartTable } from './CartTable'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetCart } from '../../../../slices/cartSlice'
 import { useNavigate } from 'react-router-dom'
 import { buyCourse } from '../../../../services/operations/studentFeatureAPI'
 
@@ -125,6 +124,8 @@ export const Cart = () => {
                         }
 
                     </>
+
+
                 </div>
         }
         </>

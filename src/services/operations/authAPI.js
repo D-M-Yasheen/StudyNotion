@@ -1,8 +1,8 @@
-import { toast } from "react-hot-toast";
-import { setLoading, setToken } from "../../slices/authSlice";
-import { setUser } from "../../slices/profileSlice";
-import { apiConnector } from "../apiconnector";
 import { authEndpoints } from "../apis";
+import { toast } from "react-hot-toast";
+import { apiConnector } from "../apiconnector";
+import { setUser } from "../../slices/profileSlice";
+import { setLoading, setToken } from "../../slices/authSlice";
 
 
 const {
@@ -82,7 +82,7 @@ export const signUp = (userData, navigate) => {
 
       toast.dismiss()
 
-      console.log("ERROR OCCURED... ", error)
+      // console.log("ERROR OCCURED... ", error)
 
       toast.error(error?.message)
 
@@ -226,8 +226,6 @@ export const logout = (navigate) => {
     toast.success("Logged out");
 
     navigate("/");
-
-
   }
 } 
 

@@ -20,12 +20,9 @@ export const VideoDetails = () => {
   const location = useLocation()
   const { token } = useSelector((state) => state.auth)
   const {
-    courseEntireData,
     courseSectionData,
-    completedLectures,
-    totalNoOfLectures
+    completedLectures
   } = useSelector((state) => state.viewCourse)
-
 
   const getCurrentSectionIndex = () => {
 
@@ -152,7 +149,7 @@ export const VideoDetails = () => {
 
       setVideoEnd(false)
 
-      console.log("video Details are: ", videoDetails)
+      // console.log("video Details are: ", videoDetails)
 
     })()
   }, [[], location.pathname])

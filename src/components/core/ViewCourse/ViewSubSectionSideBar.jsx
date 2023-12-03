@@ -1,6 +1,6 @@
 import React from 'react'
 import { BsCheckCircle } from 'react-icons/bs'
-import { MdOndemandVideo, MdOutlineOndemandVideo } from 'react-icons/md'
+import { MdOndemandVideo } from 'react-icons/md'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -8,14 +8,10 @@ export const ViewSubSectionSideBar = ({ section }) => {
     
     const nagivate = useNavigate()
     const {courseId} = useParams()
-    const {sectionId} = useParams()
     const {subSectionId} = useParams()
     
     const {
-        courseEntireData,
-        courseSectionData,
-        completedLectures,
-        totalNoOfLectures
+        completedLectures
     } = useSelector((state) => state.viewCourse)
 
     return (

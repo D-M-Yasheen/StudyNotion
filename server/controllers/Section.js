@@ -115,11 +115,11 @@ exports.deleteSection = async (req, res) => {
 
         const sectionDetails = await Section.findById({ _id: sectionId })
 
-        console.log(sectionDetails.subSection[0])
-        console.log(sectionDetails.subSection[1])
+        // console.log(sectionDetails.subSection[0])
+        // console.log(sectionDetails.subSection[1])
 
         sectionDetails.subSection.forEach(async (id) => {
-            console.log(id)
+            // console.log(id)
             const deleteAllSubSection = await SubSection.findByIdAndDelete({ _id: id })
         })
 

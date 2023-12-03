@@ -20,7 +20,7 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
   const len = course?.courseContent.length - 1;
 
   const deleteSectionHandler = async (sectionId) => {
-    console.log("Delete Section ", sectionId)
+    // console.log("Delete Section ", sectionId)
 
     const result = await deleteSection({
       sectionId,
@@ -36,12 +36,12 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
   }
 
   const deleteSubSectionHandler = async (subSectionId, sectionId) => {
-    console.log("Delete Section ", subSectionId, sectionId)
+    // console.log("Delete Section ", subSectionId, sectionId)
 
     const result = await deleteSubSection({ subSectionId, sectionId }, token);
 
     if (result) {
-      console.log("result ----> ", result)
+      // console.log("result ----> ", result)
 
       const updatedCourseContent = course?.courseContent?.map((section) => (
         section._id === result._id ? result : section

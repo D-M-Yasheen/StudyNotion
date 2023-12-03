@@ -6,8 +6,7 @@ import {
   setCourseSectionData,
   setEntireCourseData,
   setTotalNoOfLectures,
-  setCompletedLectures,
-  updateCompletedLectures,
+  setCompletedLectures
 } from '../slices/viewCourseSlice'
 import { ViewCourseSideBar } from '../components/core/ViewCourse/ViewCourseSideBar'
 import { ReviewModal } from '../components/common/ReviewModal'
@@ -68,18 +67,12 @@ export const ViewCourse = () => {
 
           <div className='w-full flex justify-end '>
             <div className={`w-[calc(100vw-20rem)]`}>
-
               <Outlet />
-
-
             </div>
             {reviewModal && <ReviewModal setReviewModal={setReviewModal} />}
           </div>
-
-
         </div>
       }
-
     </>
   )
 }

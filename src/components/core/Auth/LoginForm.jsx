@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { login } from '../../../services/operations/authAPI';
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 export const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const isTokenPresent = useSelector((state) => state.auth.token);
-
     const [loginInfo, setLoginInfo] = useState({
         email: "",
         password: ""
@@ -24,8 +21,6 @@ export const LoginForm = () => {
             }
         ))
     }
-
-
 
     const submitHandler = (event) => {
         event.preventDefault()
@@ -58,9 +53,7 @@ export const LoginForm = () => {
                             placeholder='Enter email address'
                             onChange={(event) => loginHandler(event)}
 
-                            className='text-richblack-5
-                                          text-base p-3 border-b-2 
-                                          border-richblack-400
+                            className='text-richblack-5 text-base p-3 border-b-2 border-richblack-400
                                          bg-richblack-700 rounded-lg'
                         />
 

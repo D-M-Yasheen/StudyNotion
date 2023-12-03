@@ -83,7 +83,7 @@ export const buyCourse = async (token, courses, userDetails, navigate, dispatch)
         // })
 
     } catch (error) {
-        console.log("PAYMENT API ERROR.....", error);
+        // console.log("PAYMENT API ERROR.....", error);
         toast.error(error.response.data.message);
     }
     finally{
@@ -105,7 +105,7 @@ const sendPaymentSuccessEmail = async (response, amount, token) => {
         })
 
     } catch (error) {
-        console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
+        // console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
     }
 }
 
@@ -115,7 +115,7 @@ const verifyPayment = async (bodyData, token, navigate, dispatch) => {
     dispatch(setPaymentLoading(true));
 
     try {
-        console.log("Go to verify payment .....", bodyData)
+        // console.log("Go to verify payment .....", bodyData)
         const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
             Authorisation: `Bearer ${token}`,
         })
@@ -140,7 +140,7 @@ const verifyPayment = async (bodyData, token, navigate, dispatch) => {
 
 
     } catch (error) {
-        console.log("PAYMENT VERIFY ERROR....", error);
+        // console.log("PAYMENT VERIFY ERROR....", error);
         toast.error("Could not verify Payment");
     }
     toast.dismiss(toastId);

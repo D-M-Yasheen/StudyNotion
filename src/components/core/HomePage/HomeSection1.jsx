@@ -17,11 +17,11 @@ export const HomeSection1 = () => {
     const changeCardsHandler = (value) => {
         setCurrentTab(value);
         const result = HomePageExplore.filter((element) => element.tag === value);
-        console.log(result[0].courses)
+        // console.log(result[0].courses)
         setShowCards(result[0].courses);
         setHighlightedCards(result[0].courses[0].heading)
-        console.log("showCards : ", showCards);
-        console.log("highlighted card : ", highlightedCards)
+        // console.log("showCards : ", showCards);
+        // console.log("highlighted card : ", highlightedCards)
     }
 
 

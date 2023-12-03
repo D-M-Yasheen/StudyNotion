@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { BsArrowLeft } from "react-icons/bs"
 import { RxCountdownTimer } from "react-icons/rx"
 import OTPInput from 'react-otp-input'
-// import OTPInput from 'otp-input-react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, Navigate, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { signUp, sendOtp } from '../services/operations/authAPI'
 
 export const VerifyEmail = () => {
@@ -14,14 +13,14 @@ export const VerifyEmail = () => {
     const { loading, signupData } = useSelector((state) => state.auth)
 
     function resentOtpHandler() {
-        console.log("otp is going to send in this email again : ", signupData?.email)
+        // console.log("otp is going to send in this email again : ", signupData?.email)
 
         dispatch(sendOtp(signupData?.email, navigate))
     }
 
     function verfiyHandler() {
 
-        console.log(signupData)
+        // console.log(signupData)
 
         const userData = {
             ...signupData,
@@ -44,9 +43,7 @@ export const VerifyEmail = () => {
                     <div className='flex justify-center items-center h-screen w-screen'>
                         <div class="custom-loader text-richblack-5"></div>
                     </div>
-
                     :
-
                     <div className='w-[510px] mt-40 mx-auto'>
 
                         <div className='flex flex-col justify-start items-center p-8 gap-y-6'>

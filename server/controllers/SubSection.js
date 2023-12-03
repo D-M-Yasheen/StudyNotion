@@ -11,7 +11,7 @@ exports.createSubSection = async (req, res) => {
 
         const video = req.files.videoFile;
 
-        console.log(video)
+        // console.log(video)
 
         if (!sectionId ||
             !title ||

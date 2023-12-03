@@ -4,7 +4,6 @@ import { resetCourseState, setStep } from '../../../../../slices/courseSlice';
 import { useForm } from 'react-hook-form';
 import IconBtn from '../../../../common/IconBtn';
 import { AiOutlineLeft } from 'react-icons/ai'
-import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md'
 import { useState } from 'react';
 import { COURSE_STATUS } from '../../../../../utils/constants';
 import { useEffect } from 'react';
@@ -13,14 +12,12 @@ import { useNavigate } from 'react-router-dom';
 
 export const CoursePublish = () => {
 
-    const { register, handleSubmit, formState: { errors }, setValue, getValues } = useForm()
+    const { register, handleSubmit, setValue, getValues } = useForm()
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [check, setCheck] = useState(false)
     const { course } = useSelector((state) => state.course);
     const { token } = useSelector((state) => state.auth)
-    const [loading, setLoading] = useState(false
-    )
+    const [loading, setLoading] = useState(false)
     const goBack = () => {
         dispatch(setStep(2))
     }
@@ -31,10 +28,10 @@ export const CoursePublish = () => {
     }
 
     const onSubmit = async (data) => {
-        if (course.status === COURSE_STATUS.PUBLISHED &&
-            data.public === true ||
-            course.status === COURSE_STATUS.DRAFT &&
-            data.public === false) {
+        if ((course.status === COURSE_STATUS.PUBLISHED &&
+            data.public === true) ||
+            (course.status === COURSE_STATUS.DRAFT &&
+            data.public === false)) {
 
             // console.log("Not change in form")
             goToCourses();
@@ -83,13 +80,30 @@ export const CoursePublish = () => {
                     className='flex flex-col gap-6'>
 
                     <label htmlFor='public'
-                        className='flex w-fit gap-2 items-center'>
+                        className='flex w-fit gap-2 items-center'
+                    // onClick={() => setCheck((prev) => !prev)}
+                    >
                         <input
                             type='checkbox'
                             id='public'
                             {...register("public")}
                             className='text-richblack-400 w-4 h-4'
                         />
+
+                        {/* <div>
+                        {check ?
+
+                            <MdCheckBox fontSize={20}
+                                className=' rounded-lg text-yellow-50'
+                            />
+
+                            :
+
+                            <MdCheckBoxOutlineBlank fontSize={20}
+                                className='text-richblack-400 rounded-lg '
+                            />
+                        }
+                    </div> */}
 
                         <span
                             className=' select-none text-base text-richblack-400 font-medium'>

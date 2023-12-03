@@ -2,7 +2,6 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { SideBar } from '../components/core/Dashboard/SideBar'
 import { useSelector } from 'react-redux'
-import { NavBar } from "../components/common/NavBar"
 import { useState } from 'react'
 
 export const Dashboard = () => {
@@ -30,10 +29,7 @@ export const Dashboard = () => {
 
       <div className='w-full flex justify-end'>
         <div className={`${showSideBar ? 'w-[calc(100vw-14rem)]' : 'w-[calc(100vw-3.25rem)]'} transition-all duration-500`}>
-
           <Outlet />
-
-
         </div>
       </div>
     </div>

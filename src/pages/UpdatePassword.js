@@ -49,7 +49,7 @@ export const UpdatePassword = () => {
 
     function passwordHandler(event) {
         setPassword(event.target.value)
-        console.log(password)
+        // console.log(password)
 
         const regLow = /[a-z]/
         const regUp = /[A-Z]/
@@ -81,7 +81,7 @@ export const UpdatePassword = () => {
         }
 
         const token = location.pathname.split("/").at(-1);
-        console.log(token);
+        // console.log(token);
 
         dispatch(updatePassword(password, confirmPassword, token, setPasswordUpdated));
     }

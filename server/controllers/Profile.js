@@ -12,7 +12,7 @@ exports.updateProfile = async (req, res) => {
 
         const { firstName, lastName, DOB, about = "", contact, gender } = req.body;
 
-        console.log("first and last name : ", firstName, lastName, DOB, contact)
+        // console.log("first and last name : ", firstName, lastName, DOB, contact)
 
         if (!contact || !DOB || !gender || !userId) {
             return res.status(401).json({
@@ -25,7 +25,7 @@ exports.updateProfile = async (req, res) => {
 
         const profileId = userDetails.additionalDetails;
 
-        console.log(profileId)
+        // console.log(profileId)
 
         const updateAdditionalDetails = await Profile.findByIdAndUpdate(
             { _id: profileId },
@@ -109,7 +109,7 @@ exports.updateDisplayPicture = async (req, res) => {
 
         const displayPicture = req.files.displayPicture;
 
-        console.log(userId)
+        // console.log(userId)
 
         const updatePic = await uploadImageToCloudinary(
             displayPicture,
@@ -118,9 +118,9 @@ exports.updateDisplayPicture = async (req, res) => {
             100,
         );
 
-        console.log(updatePic)
+        // console.log(updatePic)
 
-        console.log("image url : ", updatePic.secure_url)
+        // console.log("image url : ", updatePic.secure_url)
 
         const updatedProfile = await User.findByIdAndUpdate(
             { _id: userId },
@@ -227,7 +227,7 @@ exports.changeUserPassword = async (req, res) => {
         })
 
     } catch (error) {
-        console.log("Error occurred while changing the password", error);
+        // console.log("Error occurred while changing the password", error);
         return res.status(501).json({
             success: false,
             message: error.message

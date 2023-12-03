@@ -87,7 +87,7 @@ export const CourseBuilder = () => {
     }
 
     useEffect(() => {
-        console.log("UPDATED")
+        // console.log("UPDATED")
     }, [course])
 
     return (

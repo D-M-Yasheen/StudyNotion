@@ -6,24 +6,23 @@ import { InstructorCourseChart } from './InstructorCourseChart'
 import { CourseCard } from './CourseCard'
 import { useNavigate } from 'react-router-dom'
 import { PiHandWavingFill } from 'react-icons/pi'
-import WavingHand from '../../../../assets/Images/hand-waving.gif'
 
 
 
-let statistics = [
-    {
-        heading: 'Total Courses',
-        data: 0
-    },
-    {
-        heading: 'Total Students',
-        data: 0
-    },
-    {
-        heading: 'Total Income',
-        data: 0
-    }
-]
+// let statistics = [
+//     {
+//         heading: 'Total Courses',
+//         data: 0
+//     },
+//     {
+//         heading: 'Total Students',
+//         data: 0
+//     },
+//     {
+//         heading: 'Total Income',
+//         data: 0
+//     }
+// ]
 
 export const InstructorDashboard = () => {
 
@@ -91,6 +90,9 @@ export const InstructorDashboard = () => {
 
                                 <PiHandWavingFill fontSize={20} className='text-yellow-50' />
 
+                                {/* <img
+                            src={WavingHand}
+                            className='text-yellow-50 w-10 aspect-square' /> */}
                             </h1>
 
                             <p className=' text-richblack-100 text-sm'>
