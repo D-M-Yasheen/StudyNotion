@@ -1,18 +1,15 @@
 import React from 'react'
-import { EditButton } from '../EditButton'
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
 import { BsUpload } from "react-icons/bs"
-import { updateProfilePic } from '../../../../services/operations/settingAPI';
+import { EditButton } from '../EditButton'
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../../../../slices/profileSlice';
+import { updateProfilePic } from '../../../../services/operations/settingAPI';
 
 export const ProfileImgChange = () => {
-
     const { user } = useSelector((state) => state.profile);
     const { token } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
-
-
     const {
         register,
         handleSubmit,
@@ -23,17 +20,13 @@ export const ProfileImgChange = () => {
     const uploadImgHandler = async (data) => {
         try {
             const formData = new FormData();
-
-            // console.log("profile pic ---> ", data.file[0])
-
             formData.append("displayPicture", data.file[0])
-
             dispatch(updateProfilePic(token, formData)).then(() => {
                 setLoading(false);
                 reset();
             })
         } catch (error) {
-            console.log("ERROR MESSAGE - ", error.message)
+            // console.log("ERROR MESSAGE - ", error.message)
         }
     }
 
@@ -46,7 +39,6 @@ export const ProfileImgChange = () => {
 
             <img src={user?.image} width={100} height={100}
                 className='rounded-full flex justify-center items-center' />
-
 
             <div className='w-full flex flex-col items-start gap-3'>
 
@@ -72,17 +64,14 @@ export const ProfileImgChange = () => {
                             })}
                         />
 
-
                         <label htmlFor='chooseFile'
                             className={`w-fit absolute -top-[1px] -left-[1px] flex justify-center items-center rounded-md px-2 py-1  
                             gap-2 bg-yellow-50 border-yellow-25 border-[1px] text-richblack-900`}>
 
                             Choose File
-
                         </label>
 
                     </div>
-
 
                     <div className='w-full h-fit flex gap-5 lg:justify-end'>
 
@@ -97,8 +86,6 @@ export const ProfileImgChange = () => {
                         </EditButton>
 
                     </div>
-
-
                 </form>
             </div>
 

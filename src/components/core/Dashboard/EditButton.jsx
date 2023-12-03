@@ -9,7 +9,6 @@ export const EditButton = (props) => {
                   border-[1px] text-richblack-5`} `}>
 
             {props.children}
-
         </button>
     )
 }

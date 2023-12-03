@@ -73,10 +73,7 @@ export const LearningGrid = () => {
 
                 </div>
               )
-
               :
-
-
               (
                 <div key={index}
                   className={`p-8 h-[300px] flex flex-col gap-6 lg:w-full w-[400px]
@@ -93,13 +90,9 @@ export const LearningGrid = () => {
                   </p>
 
                 </div>
-              )
-
-          ))
+              )))
         }
-
       </div>
-
     </>
   )
 }

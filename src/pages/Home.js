@@ -1,10 +1,10 @@
 import React from 'react'
+import { Footer } from '../components/common/Footer'
+import { ReviewSlider } from '../components/common/ReviewSlider'
 import { HomeSection1 } from '../components/core/HomePage/HomeSection1'
 import { HomeSection2 } from '../components/core/HomePage/HomeSection2'
 import { HomeSection3 } from '../components/core/HomePage/HomeSection3'
 import { HomeSection6 } from '../components/core/HomePage/HomeSection6'
-import { Footer } from '../components/common/Footer'
-import { ReviewSlider } from '../components/common/ReviewSlider'
 
 export const Home = () => {
     return (

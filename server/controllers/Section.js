@@ -7,8 +7,6 @@ exports.createSection = async (req, res) => {
     try {
         const { sectionName, courseId } = req.body;
 
-        // courseId = new mongoose.Types.ObjectId(courseId); 
-
         if (!sectionName || !courseId) {
             return res.status(401).json({
                 success: false,
@@ -61,7 +59,7 @@ exports.updateSection = async (req, res) => {
             })
         }
 
-        const sectionDetails = await Section.findByIdAndUpdate(
+        await Section.findByIdAndUpdate(
             { _id: sectionId },
             { sectionName },
             { new: true }
@@ -103,7 +101,7 @@ exports.deleteSection = async (req, res) => {
             })
         }
 
-        const deleteFromCourse = await Course.findByIdAndUpdate(
+        await Course.findByIdAndUpdate(
             { _id: courseId },
             {
                 $pull: {
@@ -115,16 +113,12 @@ exports.deleteSection = async (req, res) => {
 
         const sectionDetails = await Section.findById({ _id: sectionId })
 
-        // console.log(sectionDetails.subSection[0])
-        // console.log(sectionDetails.subSection[1])
-
         sectionDetails.subSection.forEach(async (id) => {
-            // console.log(id)
-            const deleteAllSubSection = await SubSection.findByIdAndDelete({ _id: id })
+            await SubSection.findByIdAndDelete({ _id: id })
         })
 
 
-        const deleteFromSection = await Section.findByIdAndDelete({ _id: sectionId });
+        await Section.findByIdAndDelete({ _id: sectionId });
 
         const courseDetails = await Course.findById(
             courseId,
@@ -144,7 +138,6 @@ exports.deleteSection = async (req, res) => {
         })
 
     } catch (error) {
-
         res.status(500).json({
             success: false,
             message: error.message

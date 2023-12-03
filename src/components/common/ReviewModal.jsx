@@ -1,24 +1,18 @@
 import React from 'react'
+import IconBtn from './IconBtn';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
-import ReactStars from "react-rating-stars-component";
-import { useEffect } from 'react';
 import { RxCross2 } from 'react-icons/rx';
-import IconBtn from './IconBtn';
+import ReactStars from "react-rating-stars-component";
 import { createRating } from '../../services/operations/courseAPI';
 
-
 export const ReviewModal = ({ setReviewModal }) => {
-
     const { register, setValue, handleSubmit, formState: { errors } } = useForm()
     const { token } = useSelector((state) => state.auth)
     const { user } = useSelector((state) => state.profile)
     const { courseEntireData } = useSelector((state) => state.viewCourse)
-
     const onSubmit = async (data) => {
-        // console.log("review value : ", data.courseReview)
-        // console.log("rating value : ", data.courseRating)
-
         if (token) {
 
             await createRating({
@@ -27,13 +21,8 @@ export const ReviewModal = ({ setReviewModal }) => {
                 courseId: courseEntireData?._id
 
             }, token)
-
-            // console.log("rating result ", result)
-
         }
-
         setReviewModal(false)
-
     }
 
     const ratingChanged = (newRating) => {
@@ -66,8 +55,6 @@ export const ReviewModal = ({ setReviewModal }) => {
                     </button>
 
                 </div>
-
-
 
                 <div className='p-8 flex flex-col gap-6'>
                     <div className='w-full flex gap-3 items-center justify-center'>
@@ -123,8 +110,6 @@ export const ReviewModal = ({ setReviewModal }) => {
                             }
                         </label>
 
-
-
                         <div className='flex justify-end gap-5'>
 
                             <div>
@@ -141,13 +126,10 @@ export const ReviewModal = ({ setReviewModal }) => {
                                     Submit
                                 </IconBtn>
                             </div>
-
                         </div>
                     </form>
                 </div>
-
             </div>
-
         </div>
     )
 }

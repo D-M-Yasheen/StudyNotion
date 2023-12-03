@@ -17,7 +17,6 @@ export const Tab = ({ tabData, accountType, setAccountType }) => {
                         )
                     })
                 }
-
             </div>
         </div>
     )

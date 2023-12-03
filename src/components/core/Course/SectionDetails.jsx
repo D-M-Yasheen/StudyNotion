@@ -7,7 +7,7 @@ import { HiOutlineVideoCamera } from 'react-icons/hi2'
 export const SectionDetails = ({
     sectionDetails,
     allActiveSections,
-    handleAllActiveSection 
+    handleAllActiveSection
 }) => {
 
     const [totalSubSection, setTotalSubSection] = useState(0);
@@ -22,13 +22,13 @@ export const SectionDetails = ({
             <div className='w-full'>
 
                 <div className='w-full justify-between items-center bg-richblack-700 
-                            flex py-4 px-8 border-richblack-600'
-                            onClick={() => handleAllActiveSection(sectionDetails?._id)}>
+                        flex py-4 px-8 border-richblack-600'
+                    onClick={() => handleAllActiveSection(sectionDetails?._id)}>
 
                     <div className='w-11/12 flex justify-start items-center gap-2'>
 
                         <div>
-                            <FaAngleDown fontSize={20} className={`transition-all duration-200 ${allActiveSections?.includes(sectionDetails._id) && '-rotate-180'}`}/>
+                            <FaAngleDown fontSize={20} className={`transition-all duration-200 ${allActiveSections?.includes(sectionDetails._id) && '-rotate-180'}`} />
                         </div>
 
                         <p className='capitalize text-richblack-5 font-medium'>
@@ -42,8 +42,6 @@ export const SectionDetails = ({
                         <p className=' text-yellow-50'>
                             {totalSubSection} lectures
                         </p>
-
-
                     </div>
                 </div>
 
@@ -65,20 +63,14 @@ export const SectionDetails = ({
                                                 <p className='text-richblack-5 font-medium capitalize'>
                                                     {subSection?.title}
                                                 </p>
-
-
                                             </div>
 
                                             <p className='px-6 text-richblack-50'>
                                                 {subSection?.description}
                                             </p>
-
                                         </div>
-
                                     </div>
-
                                 </summary>
-
                             </details>
                         ))
                     }

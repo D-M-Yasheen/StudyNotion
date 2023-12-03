@@ -1,23 +1,21 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { SubSectionModal } from './SubSectionModal';
 import { Modal } from '../../../../common/Modal';
+import { SubSectionModal } from './SubSectionModal';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCourse } from '../../../../../slices/courseSlice';
 import { deleteSection, deleteSubSection } from '../../../../../services/operations/courseAPI';
 
 export const NestedView = ({ handleChangeEditSectionName }) => {
 
-  const { course } = useSelector((state) => state.course);
-  const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth)
   const [showSummary, setShowSummary] = useState(false)
+  const { course } = useSelector((state) => state.course);
   const [addSubSection, setAddSubSection] = useState(null);
   const [viewSubSection, setViewSubSection] = useState(null);
   const [editSubSection, setEditSubSection] = useState(null);
   const [confirmationModal, setConfrimationModal] = useState(null);
   const deleteSectionHandler = async (sectionId) => {
-    // console.log("Delete Section ", sectionId)
-
     const result = await deleteSection({
       sectionId,
       courseId: course._id,
@@ -32,13 +30,9 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
   }
 
   const deleteSubSectionHandler = async (subSectionId, sectionId) => {
-    // console.log("Delete Section ", subSectionId, sectionId)
-
     const result = await deleteSubSection({ subSectionId, sectionId }, token);
 
     if (result) {
-      // console.log("result ----> ", result)
-
       const updatedCourseContent = course?.courseContent?.map((section) => (
         section._id === result._id ? result : section
       ))
@@ -107,11 +101,7 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
                           btn2Text: "Cancel",
                           btn1Handler: () => deleteSectionHandler(section._id),
                           btn2Handler: () => setConfrimationModal(null),
-                        }
-
-                      )
-                    }}
-                  >
+                        })}}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <g clip-path="url(#clip0_11167_21577)">
                         <path d="M19.1654 2.5H14.9987V2.08333C14.9987 1.5308 14.7792 1.0009 14.3885 0.610194C13.9978 0.219493 13.4679 0 12.9154 0L7.08203 0C6.5295 0 5.99959 0.219493 5.60889 0.610194C5.21819 1.0009 4.9987 1.5308 4.9987 2.08333V2.5H0.832031V5H2.4987V17.5C2.4987 18.163 2.76209 18.7989 3.23093 19.2678C3.69977 19.7366 4.33566 20 4.9987 20H14.9987C15.6617 20 16.2976 19.7366 16.7665 19.2678C17.2353 18.7989 17.4987 18.163 17.4987 17.5V5H19.1654V2.5ZM14.9987 17.5H4.9987V5H14.9987V17.5Z" fill="#6E727F" />
@@ -126,7 +116,6 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
                     </svg>
                   </button>
 
-
                   {"|"}
 
                   {/* Drop Down button */}
@@ -136,9 +125,7 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
                       <path d="M4.16797 7.5H15.8346L10.5905 12.7442C10.4342 12.9004 10.2223 12.9882 10.0013 12.9882C9.78033 12.9882 9.56841 12.9004 9.41214 12.7442L4.16797 7.5Z" fill="#6E727F" />
                     </svg>
                   </div>
-
                 </div>
-
               </summary>
 
               {/* SubSection Details */}
@@ -181,8 +168,7 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
 
                           {/* Edit button */}
                           <button
-                            onClick={() => setEditSubSection({ ...data, sectionId: section._id })}
-                          >
+                            onClick={() => setEditSubSection({ ...data, sectionId: section._id })}>
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                               <path d="M2.69338 14.7618L1.43159 17.9163C1.26833 18.3244 1.67337 18.7295 2.08153 18.5662L5.236 17.3044C5.73896 17.1033 6.19582 16.802 6.57886 16.419L17.498 5.50023C18.3265 4.6718 18.3265 3.32865 17.498 2.50023C16.6696 1.6718 15.3265 1.6718 14.498 2.50023L3.57886 13.419C3.19582 13.802 2.89457 14.2589 2.69338 14.7618Z" fill="#6E727F" />
@@ -201,12 +187,7 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
                                   btn2Text: "Cancel",
                                   btn1Handler: () => deleteSubSectionHandler(data._id, section._id),
                                   btn2Handler: () => setConfrimationModal(null),
-                                }
-
-                              )
-                            }}
-                          >
-
+                                })}}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                               <g clip-path="url(#clip0_11167_21577)">
                                 <path d="M19.1654 2.5H14.9987V2.08333C14.9987 1.5308 14.7792 1.0009 14.3885 0.610194C13.9978 0.219493 13.4679 0 12.9154 0L7.08203 0C6.5295 0 5.99959 0.219493 5.60889 0.610194C5.21819 1.0009 4.9987 1.5308 4.9987 2.08333V2.5H0.832031V5H2.4987V17.5C2.4987 18.163 2.76209 18.7989 3.23093 19.2678C3.69977 19.7366 4.33566 20 4.9987 20H14.9987C15.6617 20 16.2976 19.7366 16.7665 19.2678C17.2353 18.7989 17.4987 18.163 17.4987 17.5V5H19.1654V2.5ZM14.9987 17.5H4.9987V5H14.9987V17.5Z" fill="#6E727F" />
@@ -219,13 +200,9 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
                                 </clipPath>
                               </defs>
                             </svg>
-
                           </button>
-
                         </div>
-
                       </div>
-
                     </div>
                   ))
                 }
@@ -243,9 +220,7 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
                   </svg>
                 </>
                 Add Lecture
-
               </button>
-
             </details>
 
           ))
@@ -273,14 +248,10 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
               /> :
               <></>
       }
-
       {
         confirmationModal &&
         <Modal modalData={confirmationModal} type="logout" />
       }
-
-
-
     </>
   )
 }

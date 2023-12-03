@@ -14,8 +14,6 @@ export const CourseCard = ({ Course }) => {
 
   }, [Course])
 
-  // console.log("Course in CourseCard", Course)
-
   return (
     <Link to={`/course/${Course?._id}`}>
 

@@ -12,7 +12,6 @@ const {
 } = require("../controllers/Profile");
 
 const { auth, isInstructor } = require("../middlewares/auth");
-const { changePassword } = require("../controllers/Auth");
 
 router.delete("/delete-profile", auth, deleteAccount);
 

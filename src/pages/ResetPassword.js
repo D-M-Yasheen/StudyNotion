@@ -1,31 +1,24 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { BsArrowLeft } from "react-icons/bs"
 import { useNavigate } from 'react-router-dom';
 import { sendResetPasswordEmail } from '../services/operations/authAPI';
-import { BsArrowLeft } from "react-icons/bs"
 
 
 export const ResetPassword = () => {
-
-    const [mailSend, setMailSend] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
-
-    function submitHandler(event) {
-        // console.log(email)
+    const [mailSend, setMailSend] = useState(false);
+    function submitHandler() {
         dispatch(sendResetPasswordEmail(email, setMailSend));
 
     }
 
-
     return (
         <div className='w-[510px] mt-40 mx-auto'>
-
             <div className='w-full flex flex-col justify-start items-center p-8 gap-y-9'>
-
                 <div className='w-full flex flex-col gap-y-3'>
-
                     <h1 className='text-start text-richblack-5 font-semibold text-3xl'>
                         {
                             !mailSend ?
@@ -51,15 +44,10 @@ export const ResetPassword = () => {
                         !mailSend &&
 
                         <div className='w-full'>
-
                             <label className='w-full flex flex-col gap-1'>
-
                                 <p className='w-full text-sm font-normal text-richblack-5'>
-
                                     Email Address
-
                                     <span className='mx-[2px] text-pink-200 text-sm'> * </span>
-
                                 </p>
 
                                 <input
@@ -72,22 +60,17 @@ export const ResetPassword = () => {
                                     text-base p-3 border-b-2 border-richblack-400
                                 bg-richblack-800 rounded-lg'
                                 />
-
                             </label>
-
                         </div>
-
                     }
 
                 </div>
 
                 <div className='w-full flex flex-col gap-y-3'>
-
                     <button type='submit'
-                        className='text-center w-full bg-yellow-50 
-                    text-richblack-9 p-3 mx-auto rounded-lg'
+                        className='text-center w-full bg-yellow-50 text-richblack-9 p-3 
+                        mx-auto rounded-lg'
                         onClick={submitHandler}>
-
                         <p className='text-richblack-900 font-medium text-base'>
                             {
                                 !mailSend ?
@@ -114,13 +97,9 @@ export const ResetPassword = () => {
                         <p>
                             Back
                         </p>
-
                     </button>
-
                 </div>
-
             </div>
-
         </div>
     )
 }

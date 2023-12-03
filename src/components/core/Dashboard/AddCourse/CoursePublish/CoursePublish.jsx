@@ -1,27 +1,23 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { resetCourseState, setStep } from '../../../../../slices/courseSlice';
-import { useForm } from 'react-hook-form';
-import IconBtn from '../../../../common/IconBtn';
-import { AiOutlineLeft } from 'react-icons/ai'
 import { useState } from 'react';
-import { COURSE_STATUS } from '../../../../../utils/constants';
 import { useEffect } from 'react';
-import { editCourseDetails } from '../../../../../services/operations/courseAPI';
+import { useForm } from 'react-hook-form';
+import { AiOutlineLeft } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
+import IconBtn from '../../../../common/IconBtn';
+import { useDispatch, useSelector } from 'react-redux'
+import { COURSE_STATUS } from '../../../../../utils/constants';
+import { resetCourseState, setStep } from '../../../../../slices/courseSlice';
+import { editCourseDetails } from '../../../../../services/operations/courseAPI';
 
 export const CoursePublish = () => {
-
-    const { register, handleSubmit, setValue, getValues } = useForm()
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { course } = useSelector((state) => state.course);
-    const { token } = useSelector((state) => state.auth)
+    const goBack = () => dispatch(setStep(2))
     const [loading, setLoading] = useState(false)
-    const goBack = () => {
-        dispatch(setStep(2))
-    }
-
+    const { token } = useSelector((state) => state.auth)
+    const { course } = useSelector((state) => state.course);
+    const { register, handleSubmit, setValue, getValues } = useForm()
     const goToCourses = () => {
         dispatch(resetCourseState())
         navigate("/dashboard/my-courses")
@@ -32,32 +28,21 @@ export const CoursePublish = () => {
             data.public === true) ||
             (course.status === COURSE_STATUS.DRAFT &&
             data.public === false)) {
-
-            // console.log("Not change in form")
             goToCourses();
             return;
         }
-
         const formData = new FormData();
-
         formData.append("courseId", course._id);
         const courseStatus = getValues("public") ?
             COURSE_STATUS.PUBLISHED :
             COURSE_STATUS.DRAFT;
         formData.append("status", courseStatus)
-
         setLoading(true);
-
         const result = await editCourseDetails(formData, token);
-
-        // console.log("EDIT COURSE DETAILS API is called....", data.public)
-
         if (result) {
             goToCourses()
         }
-
         setLoading(false)
-
     }
 
     useEffect(() => {
@@ -80,30 +65,12 @@ export const CoursePublish = () => {
                     className='flex flex-col gap-6'>
 
                     <label htmlFor='public'
-                        className='flex w-fit gap-2 items-center'
-                    // onClick={() => setCheck((prev) => !prev)}
-                    >
+                        className='flex w-fit gap-2 items-center'>
                         <input
                             type='checkbox'
                             id='public'
                             {...register("public")}
-                            className='text-richblack-400 w-4 h-4'
-                        />
-
-                        {/* <div>
-                        {check ?
-
-                            <MdCheckBox fontSize={20}
-                                className=' rounded-lg text-yellow-50'
-                            />
-
-                            :
-
-                            <MdCheckBoxOutlineBlank fontSize={20}
-                                className='text-richblack-400 rounded-lg '
-                            />
-                        }
-                    </div> */}
+                            className='text-richblack-400 w-4 h-4'/>
 
                         <span
                             className=' select-none text-base text-richblack-400 font-medium'>
@@ -125,9 +92,7 @@ export const CoursePublish = () => {
                             <IconBtn outline={true} text='Save Changes' type="Submit"></IconBtn>
                         </div>
                     </div>
-
                 </form>
-
             </div>
         </div>
     )

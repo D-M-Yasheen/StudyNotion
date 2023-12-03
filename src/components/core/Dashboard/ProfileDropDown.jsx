@@ -1,21 +1,20 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai"
 import { NavLink, useNavigate } from 'react-router-dom';
 import { VscDashboard, VscSignOut } from 'react-icons/vsc';
 import { logout } from '../../../services/operations/authAPI';
 import { useOnClickOutside } from '../../../hook/useOnClickOutside';
+import { AiOutlineCaretDown, AiOutlineCaretUp } from "react-icons/ai"
 
 export const ProfileDropDown = () => {
-    const { user } = useSelector((state) => state.profile);
-    const [showDropDown, setShowDropDown] = useState(false);
+    const ref = useRef(null)
     const userImg = user?.image;
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const ref = useRef(null)
-
+    const { user } = useSelector((state) => state.profile);
+    const [showDropDown, setShowDropDown] = useState(false);
+    
     useOnClickOutside(ref, () => setShowDropDown(false));
-
 
     return (
         <div className='relative cursor-pointer'>
@@ -37,14 +36,12 @@ export const ProfileDropDown = () => {
                                 className=" text-richblack-100" />
                     }
                 </div>
-
             </div>
 
-
             <div className={`absolute bg-richblack-700 capitalize
-                            right-[50%] top-[120%] translate-x-[50%] flex flex-col
-                            rounded-xl transition-all duration-500 origin-top-right
-                            ${showDropDown ? 'visible opacity-100 scale-y-100' :
+                    right-[50%] top-[120%] translate-x-[50%] flex flex-col
+                    rounded-xl transition-all duration-500 origin-top-right
+                    ${showDropDown ? 'visible opacity-100 scale-y-100' :
                     'invisible opacity-0 scale-y-0'}`}
                 ref={ref}
                 onClick={(event) => event.stopPropagation()}>
@@ -52,9 +49,9 @@ export const ProfileDropDown = () => {
                 <NavLink to="/dashboard/my-profile" onClick={() => setShowDropDown((prev) => !prev)}>
 
                     <button className='flex justify-start items-center w-full 
-                                            gap-x-1 p-3 text-sm text-richblack-100 
-                                            transition-all duration-200 select-none rounded-xl
-                                            hover:bg-richblack-700 hover:text-richblack-25 '>
+                                gap-x-1 p-3 text-sm text-richblack-100 
+                                transition-all duration-200 select-none rounded-xl
+                                hover:bg-richblack-700 hover:text-richblack-25 '>
 
                         <VscDashboard className='text-lg' />
 
@@ -67,9 +64,9 @@ export const ProfileDropDown = () => {
                 <div className='h-[1px] bg-richblack-700 w-11/12 mx-auto rounded-full'></div>
 
                 <button className='flex items-center w-full gap-x-1 select-none
-                                    p-3 justify-start text-sm text-richblack-100 
-                                    transition-all duration-200 hover:bg-richblack-700
-                                    hover:text-richblack-25 rounded-xl'
+                            p-3 justify-start text-sm text-richblack-100 
+                            transition-all duration-200 hover:bg-richblack-700
+                            hover:text-richblack-25 rounded-xl'
                     onClick={() => {
                         dispatch(logout(navigate))
                         setShowDropDown(false)

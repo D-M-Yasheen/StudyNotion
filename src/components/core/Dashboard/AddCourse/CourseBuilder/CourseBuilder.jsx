@@ -1,27 +1,25 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setCourse, setEditCourse, setStep } from '../../../../../slices/courseSlice'
-import { useForm } from 'react-hook-form';
-import IconBtn from "../../../../common/IconBtn"
 import { useState } from 'react';
+import { useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+import { NestedView } from './NestedView';
+import IconBtn from "../../../../common/IconBtn"
+import { useDispatch, useSelector } from 'react-redux'
 import {
     updateSection,
     createSection,
 } from '../../../../../services/operations/courseAPI'
-import { NestedView } from './NestedView';
-import { useEffect } from 'react';
 import { AiOutlineRight, AiOutlineLeft, AiOutlinePlusCircle } from 'react-icons/ai'
+import { setCourse, setEditCourse, setStep } from '../../../../../slices/courseSlice'
 
 export const CourseBuilder = () => {
-    const { course } = useSelector((state) => state.course);
     const dispatch = useDispatch();
-    const { register, handleSubmit, setValue, formState: { errors } } = useForm()
-    const [editSectionName, setEditSectionName] = useState(null)
     const [loading, setLoading] = useState(false)
     const { token } = useSelector((state) => state.auth)
-
-
+    const { course } = useSelector((state) => state.course);
+    const [editSectionName, setEditSectionName] = useState(null)
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm()
     const goBack = () => {
         dispatch(setStep(1));
         dispatch(setEditCourse(true))
@@ -36,7 +34,6 @@ export const CourseBuilder = () => {
             toast.error("Please add atleast one lecture in each section");
             return;
         }
-        //if everything is good
         dispatch(setStep(3));
     }
 
@@ -48,7 +45,6 @@ export const CourseBuilder = () => {
     const onSubmit = async (data) => {
         setLoading(true)
         let result;
-
 
         if (editSectionName) {
             //we are editing the secgtion name
@@ -66,13 +62,11 @@ export const CourseBuilder = () => {
                 courseId: course._id,
             }, token)
         }
-
         if (result) {
             dispatch(setCourse(result));
             setEditSectionName(null);
             setValue('sectionName', '')
         }
-
         setLoading(false)
     }
 
@@ -81,18 +75,16 @@ export const CourseBuilder = () => {
             cancelEdit();
             return;
         }
-
         setEditSectionName(sectionId);
         setValue("sectionName", sectionName);
     }
 
     useEffect(() => {
-        // console.log("UPDATED")
     }, [course])
 
     return (
         <div className='w-full flex flex-col p-6 gap-6 rounded-lg
-                        border-richblack-700 bg-richblack-800'>
+                border-richblack-700 bg-richblack-800'>
 
             <p className='w-full font-semibold text-2xl text-richblack-5'>
                 Course Builder
@@ -126,7 +118,6 @@ export const CourseBuilder = () => {
                             <span className='text-pink-200 text-xs'>{errors.sectionName.message}</span>
                         }
                     </label>
-
                 </>
 
                 <div className='flex items-end gap-6'>
@@ -134,12 +125,10 @@ export const CourseBuilder = () => {
                     border-[1px] border-yellow-50 gap-2 rounded-lg lg:font-semibold
                     lg:text-lg md:text-base text-sm lg:py-3 md:py-2 py-1 lg:px-6 md:px-4 px-2'
                         type='Submit'>
-
                         <p>
                             {editSectionName ? 'Edit Section Name' : 'Create Section'}
                         </p>
                         <AiOutlinePlusCircle fontSize={20}/>
-
                     </button>
 
                     {
@@ -147,8 +136,7 @@ export const CourseBuilder = () => {
                             <button
                                 type='button'
                                 onClick={cancelEdit}
-                                className=' underline text-richblack-400 text-sm'
-                            >
+                                className=' underline text-richblack-400 text-sm'>
                                 Cancel Edit
                             </button>
                         )
@@ -162,16 +150,13 @@ export const CourseBuilder = () => {
                 )}
             </>
 
-
             <div className='flex justify-end w-full gap-x-2'>
 
                 <div className='w-fit'>
                     <IconBtn
                         onclick={goBack}>
-
                         <AiOutlineLeft />
                         <p>Back</p>
-
                     </IconBtn>
                 </div>
 
@@ -179,15 +164,11 @@ export const CourseBuilder = () => {
                     <IconBtn
                         onclick={goToNext}
                         outline={true}>
-
                         <p>Next</p>
                         <AiOutlineRight />
-
                     </IconBtn>
                 </div>
-
             </div>
-
         </div>
     )
 }

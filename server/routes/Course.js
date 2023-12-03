@@ -43,8 +43,7 @@ const {
 } = require("../middlewares/auth")
 
 const {
-    updateCourseProgress, 
-    // getProgressPercentage
+    updateCourseProgress
 } = require("../controllers/CourseProgress")
 
 
@@ -77,8 +76,6 @@ router.post("/editCourse", auth, isInstructor, editCourse)
 
 router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
 
-// router.post("/getProgressPercentage", auth, isStudent, getProgressPercentage)
-
 router.delete("/deleteCourse", auth, isInstructor, deleteCourse)
 
 
@@ -104,19 +101,11 @@ router.get("/getAverageRating", getAverageRating);
 router.get("/getReviews", getAllRating);
 
 
-
 // ******************************************************************************************
 //                                updateCourseProgress ROUTES 
 // ******************************************************************************************
 
-
-
 router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress)
-
-
-
-
-
 
 
 

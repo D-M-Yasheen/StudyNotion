@@ -4,11 +4,8 @@ import { Pie } from "react-chartjs-2"
 
 ChartJS.register(...registerables)
 
-
 export const InstructorCourseChart = ({ instructorDetails }) => {
-
     const [status, setStatus] = useState("Students")
-
     const generateRandomColors = (numColors) => {
         const colors = []
         for (let i = 0; i < numColors; i++) {
@@ -46,14 +43,11 @@ export const InstructorCourseChart = ({ instructorDetails }) => {
 
     return (
         <div>
-
             <div className='flex gap-2 text-yellow-50 font-semibold text-sm'>
-
                 <button
                     onClick={() => setStatus('Students')}
                     className={`py-1 px-3 transition-all duration-200 
-                    ${status === 'Students' ? 'bg-richblack-700 rounded-md' : 'opacity-50'}`}
-                >
+                    ${status === 'Students' ? 'bg-richblack-700 rounded-md' : 'opacity-50'}`}>
                     Students
                 </button>
 
@@ -70,9 +64,7 @@ export const InstructorCourseChart = ({ instructorDetails }) => {
 
                 <Pie
                     data={status === "Students" ? chartDataStudents : chartIncomeData}
-                    options={options}
-                />
-
+                    options={options}/>
             </div>
 
         </div>

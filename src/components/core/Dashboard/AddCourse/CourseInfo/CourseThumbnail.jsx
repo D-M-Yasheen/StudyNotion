@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react"
+import { Player } from "video-react"
+import "video-react/dist/video-react.css"
 import { useDropzone } from "react-dropzone"
 import { FiUploadCloud } from "react-icons/fi"
-import "video-react/dist/video-react.css"
-import { Player } from "video-react"
-
+import { useEffect, useRef, useState } from "react"
 
 export const CourseThumbnail = ({
   name,
@@ -20,7 +19,6 @@ export const CourseThumbnail = ({
     viewData ? viewData : editData ? editData : ""
   )
   const inputRef = useRef(null)
-
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0]
     if (file) {
@@ -37,7 +35,6 @@ export const CourseThumbnail = ({
   })
 
   const previewFile = (file) => {
-    // console.log(file)
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
@@ -47,12 +44,10 @@ export const CourseThumbnail = ({
 
   useEffect(() => {
     register(name, { required: true })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [register])
 
   useEffect(() => {
     setValue(name, selectedFile)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedFile, setValue])
 
   return (

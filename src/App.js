@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { ACCOUNT_TYPE } from "./utils/constants";
 
-
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Error } from "./pages/Error";

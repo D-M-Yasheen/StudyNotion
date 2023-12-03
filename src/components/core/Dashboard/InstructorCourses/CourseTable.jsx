@@ -1,44 +1,31 @@
 import React, { useState } from 'react'
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
-import { AiFillCheckCircle, AiFillClockCircle } from 'react-icons/ai'
-import { BiRupee } from 'react-icons/bi'
-import { RiDeleteBin6Line } from 'react-icons/ri'
 import { MdEdit } from 'react-icons/md'
+import { BiRupee } from 'react-icons/bi'
 import {  useSelector } from 'react-redux';
 import { Modal } from '../../../common/Modal';
-import { deleteCourse, fetchInstructorCourses } from '../../../../services/operations/courseAPI';
 import { useNavigate } from 'react-router-dom';
+import { RiDeleteBin6Line } from 'react-icons/ri'
 import { formatDate } from '../../../../services/formatDate';
+import { AiFillCheckCircle, AiFillClockCircle } from 'react-icons/ai'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import { deleteCourse, fetchInstructorCourses } from '../../../../services/operations/courseAPI';
 
 export const CourseTable = ({ courses, setCourses }) => {
-
-
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const { token } = useSelector((state) => state.auth);
     const [confirmationModal, setConfirmationModal] = useState(null)
-    const navigate = useNavigate()
-
-    // console.log("instructor my course details : ", courses)
-
     const deleteCourseHandler = async (courseId) => {
-
         setLoading(true);
-
         const result = await deleteCourse({ courseId }, token);
-
         if (result) {
-            // console.log("deleted course result : ", result)
             const ans = await fetchInstructorCourses(token);
-            // console.log("ans : ", ans)
             setCourses(ans);
         }
-
         setConfirmationModal(null)
-
         setLoading(false)
     }
-
 
     return (
         <div>

@@ -1,13 +1,13 @@
 import React from 'react'
-import { AboutSection1 } from '../components/core/AboutPage/AboutSection1'
+import { Footer } from '../components/common/Footer'
+import { ReviewSlider } from '../components/common/ReviewSlider'
+import { AboutStat } from '../components/core/AboutPage/AboutStat'
 import { AboutHeader } from '../components/core/AboutPage/AboutHeader'
+import { LearningGrid } from '../components/core/AboutPage/LearningGrid'
+import { AboutSection1 } from '../components/core/AboutPage/AboutSection1'
 import { AboutSection2 } from '../components/core/AboutPage/AboutSection2'
 import { AboutSection3 } from '../components/core/AboutPage/AboutSection3'
-import { AboutStat } from '../components/core/AboutPage/AboutStat'
-import { LearningGrid } from '../components/core/AboutPage/LearningGrid'
-import { Footer } from '../components/common/Footer'
 import { ContactUsSection } from '../components/core/AboutPage/ContactUsSection'
-import { ReviewSlider } from '../components/common/ReviewSlider'
 
 export const About = () => {
     return (

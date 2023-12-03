@@ -11,12 +11,11 @@ const tips = [
     "Notes to all enrolled students at once."
 ]
 
-
 export const CourseTips = () => {
     return (
         <div className={`w-[38rem] lg:flex hidden flex-col p-6
-    items-start gap-5 rounded-lg bg-richblack-800
-    border-richblack-700 border h-fit`}>
+                items-start gap-5 rounded-lg bg-richblack-800
+                border-richblack-700 border h-fit`}>
 
             <svg width="189" height="21" viewBox="0 0 189 21" fill="none" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
                 <path d="M0 18.26H18V0.26H0V18.26Z" fill="url(#pattern0)" />
