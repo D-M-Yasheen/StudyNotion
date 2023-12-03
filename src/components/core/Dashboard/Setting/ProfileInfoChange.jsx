@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux'
 import { EditButton } from '../EditButton';
@@ -13,10 +13,8 @@ export const ProfileInfoChange = () => {
     const {
         register,
         handleSubmit,
-        reset,
         formState: {
-            errors,
-            isSubmitSuccessful
+            errors
         }
     } = useForm();
 
@@ -263,10 +261,6 @@ export const ProfileInfoChange = () => {
                                 },
                                 minLength: {
                                     value: 8,
-                                    message: "*invalid phone number"
-                                },
-                                pattern: {
-                                    value: '^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$',
                                     message: "*invalid phone number"
                                 }
                             })}

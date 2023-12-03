@@ -1,15 +1,12 @@
 import React from 'react'
 import * as Icons from "react-icons/vsc"
 import { matchPath, useLocation, useNavigate } from 'react-router-dom';
-import { logout } from '../../../services/operations/authAPI';
 import { useDispatch } from 'react-redux';
-import { Modal } from '../../common/Modal';
 
 export const SideBarLink = ({ element, flag, showSideBar }) => {
   const Icon = Icons[element.icon];
   const location = useLocation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   return (
     <div>

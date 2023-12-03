@@ -5,7 +5,6 @@ import { CourseThumbnail } from './CourseThumbnail';
 import { CourseRequirement } from './CourseRequirement';
 import { AiOutlineRight } from 'react-icons/ai';
 import { HiOutlineCurrencyRupee } from 'react-icons/hi';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { COURSE_STATUS } from '../../../../../utils/constants'
 import { setStep, setCourse } from "../../../../../slices/courseSlice"

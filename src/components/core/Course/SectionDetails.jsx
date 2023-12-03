@@ -1,48 +1,25 @@
 import React from 'react'
 import { useEffect } from 'react';
-import { useRef } from 'react';
 import { useState } from 'react'
-import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
+import { FaAngleDown } from 'react-icons/fa'
 import { HiOutlineVideoCamera } from 'react-icons/hi2'
 
 export const SectionDetails = ({
     sectionDetails,
     allActiveSections,
-    setAllActiveSections,
-    handleAllActiveSection }) => {
-
-    // console.log("sectio id : ", sectionDetails._id)
-    // const contentEl = useRef(null)
-
-    // // Accordian state
-    // const [active, setActive] = useState(false)
-    // useEffect(() => {
-    //     setActive(activeStatus?.includes(key))
-    //     console.log("active : ", activeStatus)
-    // }, [activeStatus])
-
-    // const [sectionHeight, setSectionHeight] = useState(0)
-    // useEffect(() => {
-    //     // setSectionHeight(active ? contentEl.current.scrollHeight : 0)
-    // }, [active])
-
-
-
+    handleAllActiveSection 
+}) => {
 
     const [totalSubSection, setTotalSubSection] = useState(0);
 
-
     useEffect(() => {
-        // setActiveStatus()
-        let total = 0;
         setTotalSubSection(sectionDetails?.subSection?.length || 0)
     }, [sectionDetails])
 
     return (
         <div className='w-full text-sm border-[1px] border-richblack-500'>
 
-            <div className='w-full'
-                >
+            <div className='w-full'>
 
                 <div className='w-full justify-between items-center bg-richblack-700 
                             flex py-4 px-8 border-richblack-600'

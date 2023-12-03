@@ -10,9 +10,7 @@ import { getFullDetailsOfCourse } from '../../../../services/operations/courseAP
 import IconBtn from '../../../common/IconBtn';
 
 export const EditCourseIndex = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const { courseId } = useParams();
+    const dispatch = useDispatch();    const { courseId } = useParams();
     const [loading, setLoading] = useState(false);
     const { token } = useSelector((state) => state.auth);
     const { course } = useSelector((state) => state.course);

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { AiOutlinePlus } from 'react-icons/ai'
 import { SubSectionModal } from './SubSectionModal';
 import { Modal } from '../../../../common/Modal';
 import { setCourse } from '../../../../../slices/courseSlice';
@@ -15,10 +14,7 @@ export const NestedView = ({ handleChangeEditSectionName }) => {
   const [addSubSection, setAddSubSection] = useState(null);
   const [viewSubSection, setViewSubSection] = useState(null);
   const [editSubSection, setEditSubSection] = useState(null);
-  const [confirmationModal, setConfrimationModal] = useState(null)
-
-  const len = course?.courseContent.length - 1;
-
+  const [confirmationModal, setConfrimationModal] = useState(null);
   const deleteSectionHandler = async (sectionId) => {
     // console.log("Delete Section ", sectionId)
 

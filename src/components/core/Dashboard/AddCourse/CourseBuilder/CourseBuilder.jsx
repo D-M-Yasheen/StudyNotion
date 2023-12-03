@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 import { AiOutlineRight, AiOutlineLeft, AiOutlinePlusCircle } from 'react-icons/ai'
 
 export const CourseBuilder = () => {
-    const { step, course, editCourse } = useSelector((state) => state.course);
+    const { course } = useSelector((state) => state.course);
     const dispatch = useDispatch();
     const { register, handleSubmit, setValue, formState: { errors } } = useForm()
     const [editSectionName, setEditSectionName] = useState(null)

@@ -89,7 +89,7 @@ export const changePassword = (token, data) => {
         try {
             // console.log("password change data we got : ", data);
 
-            const response = await apiConnector("PUT", CHANGE_PASSWORD_API, data, {
+            await apiConnector("PUT", CHANGE_PASSWORD_API, data, {
                 Authorisation: `Bearer ${token}`
             })
 

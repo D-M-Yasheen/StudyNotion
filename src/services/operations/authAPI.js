@@ -68,7 +68,7 @@ export const signUp = (userData, navigate) => {
         confirmPassword, accountType } = userData
 
 
-      const response = await apiConnector("POST", SIGNUP_API, {
+      await apiConnector("POST", SIGNUP_API, {
         accountType, firstName, lastName, email, otp, password, confirmPassword
       })
 
@@ -154,7 +154,7 @@ export const sendResetPasswordEmail = (email, setMailSend) => {
 
       toast.loading("Please wait for your email")
 
-      const response = await apiConnector("POST",
+      await apiConnector("POST",
         RESETPASSWORD_TOKEN_API, { email });
 
       setMailSend(true);
@@ -186,7 +186,7 @@ export const updatePassword = (password, confirmPassword, token, setPasswordUpda
 
     try {
 
-      const response = await apiConnector("POST", RESETPASSWORD_API,
+      await apiConnector("POST", RESETPASSWORD_API,
         { password, confirmPassword, token })
 
 

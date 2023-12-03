@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import { EditButton } from '../EditButton'
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -16,11 +16,7 @@ export const ProfileImgChange = () => {
     const {
         register,
         handleSubmit,
-        reset,
-        formState: {
-            errors,
-            isSubmitSuccessful
-        }
+        reset
     } = useForm();
 
 
@@ -37,7 +33,7 @@ export const ProfileImgChange = () => {
                 reset();
             })
         } catch (error) {
-            // console.log("ERROR MESSAGE - ", error.message)
+            console.log("ERROR MESSAGE - ", error.message)
         }
     }
 

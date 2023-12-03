@@ -3,7 +3,7 @@ import { studentEndpoints } from "../apis";
 import { apiConnector } from "../apiconnector";
 import rzpLogo from "../../assets/Logo/rzp_logo.png"
 import { setPaymentLoading } from "../../slices/courseSlice";
-import { removeFromCart, resetCart } from "../../slices/cartSlice";
+import { removeFromCart } from "../../slices/cartSlice";
 
 
 const { COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API } = studentEndpoints;

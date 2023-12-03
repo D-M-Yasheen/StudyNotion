@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import { avgRating } from '../../../utils/avgRating'
 
 export const CourseCard = ({ Course }) => {
-  const Review_Count = 3.5
-
   const [ratingCount, setRatingCount] = useState(0);
 
   useEffect(() => {

@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { FaShareSquare } from 'react-icons/fa'
 import IconBtn from '../../common/IconBtn';
-import { AiFillCaretRight } from 'react-icons/ai'
 import { FiCornerDownRight } from 'react-icons/fi'
 import copy from 'copy-to-clipboard';
 import { toast } from 'react-hot-toast';

@@ -5,7 +5,6 @@ import { ImTree } from "react-icons/im"
 import { HiUsers } from "react-icons/hi"
 
 export const ShowCards = ({ showCards, highlightedCards, setHighlightedCards }) => {
-    let clickValue = false;
 
     function changeHighlightedCardHandler(value) {
         setHighlightedCards(value);

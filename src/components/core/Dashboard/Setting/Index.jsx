@@ -1,15 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { ProfileImgChange } from './ProfileImgChange';
 import { ProfileInfoChange } from './ProfileInfoChange';
 import { ChangePassword } from './ChangePassword';
 import { DeleteAccount } from './DeleteAccount';
-import { EditButton } from '../EditButton';
-import { useNavigate } from 'react-router-dom';
 
 export const Index = () => {
-    const { user } = useSelector((state) => state.profile);
-    const navigate = useNavigate();
 
     return (
         <div className='w-11/12 mx-auto flex flex-col gap-10 my-10'>

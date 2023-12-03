@@ -21,7 +21,7 @@ export const ReviewModal = ({ setReviewModal }) => {
 
         if (token) {
 
-            const result = await createRating({
+            await createRating({
                 rating: data.courseRating,
                 review: data.courseReview,
                 courseId: courseEntireData?._id

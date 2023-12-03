@@ -1,7 +1,4 @@
 import React from 'react'
-import { BsDot, BsFillLightningChargeFill } from 'react-icons/bs'
-import { GoDotFill } from 'react-icons/go'
-
 
 const tips = [
     "Set the Course Price option or make it free.",

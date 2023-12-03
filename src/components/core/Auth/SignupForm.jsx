@@ -1,11 +1,10 @@
-import react, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { BsInfoCircleFill } from "react-icons/bs"
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ACCOUNT_TYPE } from '../../../utils/constants'
 import { Tab } from '../../common/Tab'
-import { toast } from 'react-hot-toast'
 import { setSignupData } from '../../../slices/authSlice'
 import { sendOtp } from '../../../services/operations/authAPI'
 import { useForm } from 'react-hook-form'
@@ -54,15 +53,13 @@ export const SignupForm = () => {
     const {
         register,
         handleSubmit,
-        reset,
         watch,
         formState: {
-            errors,
-            isSubmitSuccessful
+            errors
         }
     } = useForm();
 
-    let password = watch("password", "")
+    watch("password", "")
 
 
     const signupForm = (data) => {
@@ -312,7 +309,7 @@ export const SignupForm = () => {
                                         value: true,
                                     },
                                     validate: (val) => {
-                                        if (watch('password') != val) {
+                                        if (watch('password') !== val) {
                                             return "*passwords not match";
                                         }
                                     }

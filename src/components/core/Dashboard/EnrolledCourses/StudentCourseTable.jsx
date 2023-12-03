@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { BsThreeDotsVertical } from 'react-icons/bs'
-
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { useNavigate } from 'react-router-dom';
@@ -9,27 +8,7 @@ import { LectureCompletionBar } from './LectureCompletionBar';
 
 export const StudentCourseTable = ({ coursesData, setCoursesData }) => {
     const navigate = useNavigate()
-
     const [showDropDown, setShowDropDown] = useState(false)
-
-
-    // const handleProgress = (course) => {
-
-
-    //     let totalLecture = 0
-    //     course.forEach((section) => (
-    //         totalLecture += section.subSection.length
-    //     ))
-
-    //     console.log("total lecture : ", totalLecture)
-
-    //     // setProgress(totalLecture)
-    // }
-
-
-    // useEffect(() => {
-    //     // setProgress(coursesData.courseProgress?.[0]?.completedVideos?.length)
-    // }, [])
 
     return (
 

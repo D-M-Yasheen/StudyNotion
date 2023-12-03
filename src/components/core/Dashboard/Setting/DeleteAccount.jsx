@@ -22,16 +22,6 @@ export const DeleteAccount = () => {
      
     }
 
-
-    async function handleDeleteAccount() {
-        try {
-          dispatch(deleteProfile(token, navigate))
-        } catch (error) {
-        //   console.log("ERROR MESSAGE - ", error.message)
-        }
-      }
-
-
     return (
         <div className=' bg-pink-900 border-pink-700  rounded-lg 
         border-[1px] flex py-6 lg:items-start md:items-center items-center

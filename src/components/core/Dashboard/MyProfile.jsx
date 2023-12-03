@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux';
 import { BiEdit } from "react-icons/bi"
 import { EditButton } from './EditButton';
@@ -9,13 +9,12 @@ export const MyProfile = () => {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
 
-  const img = user?.image;
+
   const email = user?.email.length < 10 ? user?.email : (user?.email.slice(0, 6) + "*****@" + user?.email.split("@").at(-1));
   const firstName = user?.firstName;
   const lastName = user?.lastName;
   const fullName = firstName + " " + lastName;
 
-  const phoneNumber = user?.contact ?? "Add your contact number";
 
   const about = user?.additionalDetails?.about ?? "Write about yourself";
 
