@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+
+
 exports.auth = async (req, res, next) => {
     try {
         const token = req.body.token
@@ -62,6 +64,7 @@ exports.isInstructor = async (req, res, next) => {
                 message: "This is protect route for Instructor."
             })
         }
+
         next();
 
     } catch (error) {

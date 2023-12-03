@@ -1,26 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form';
-import { EditButton } from '../EditButton';
 import { useDispatch, useSelector } from 'react-redux'
+import { EditButton } from '../EditButton';
 import { updateUserInfo } from '../../../../services/operations/settingAPI';
 
 export const ProfileInfoChange = () => {
-    const dispatch = useDispatch();
+
     const { user } = useSelector((state) => state.profile);
     const { token } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+
     const {
         register,
         handleSubmit,
+        reset,
         formState: {
-            errors
+            errors,
+            isSubmitSuccessful
         }
     } = useForm();
 
     const infoUpdateHandler = (data) => {
+        console.log("change info setting/profilechange : ", data)
         try {
             dispatch(updateUserInfo(token, data));
+       
+
         } catch (error) {
-            // console.log("Error occured : ", error.message)
+            console.log("Error occured : ", error.message)
         }
     }
 
@@ -30,9 +37,13 @@ export const ProfileInfoChange = () => {
        items-center py-6 px-12 flex flex-col gap-5'>
 
             <div className='flex w-full items-center justify-between flex-wrap'>
+
                 <h1 className='text-richblack-5 text-xl font-semibold'>
+
                     Profile Information
+
                 </h1>
+
             </div>
 
             <form onSubmit={handleSubmit(infoUpdateHandler)}
@@ -43,11 +54,15 @@ export const ProfileInfoChange = () => {
 
                     {/* First Name */}
                     <label className='w-full flex flex-col gap-[6px]'>
+
                         <p className='text-richblack-5 font-normal text-sm'>
+
                             First Name
+
                         </p>
 
-                        <input type="text"
+                        <input
+                            type="text"
                             placeholder={"Enter First Name"}
                             name="firstName"
 
@@ -78,18 +93,26 @@ export const ProfileInfoChange = () => {
                                 {errors.firstName.message}
                             </span>
                         }
+
                         <p className='text-richblack-500 text-xs font-normal'>
+
                             Name entered above will be used for all issued certifies.
+
                         </p>
+
                     </label>
 
                     {/* Last Name */}
                     <label className='w-full flex flex-col gap-[6px]'>
 
                         <p className='text-richblack-5 font-normal text-sm'>
+
                             Last Name
+
                         </p>
-                        <input type="text"
+
+                        <input
+                            type="text"
                             placeholder={"Enter Last Name"}
                             name="lastName"
                             className='flex p-3 items-center gap-3  border-richblack-5
@@ -112,16 +135,25 @@ export const ProfileInfoChange = () => {
                             })}
                             defaultValue={user?.lastName}
                         />
+
                         {
                             errors.firstName &&
                             <span className='text-xs text-pink-300'>
                                 {errors.lastName.message}
                             </span>
                         }
+
+
+
                         <p className='text-richblack-500 text-xs font-normal'>
+
                             Name entered above will be used for all issued certifies.
+
                         </p>
+
                     </label>
+
+
                 </div>
 
 
@@ -130,11 +162,15 @@ export const ProfileInfoChange = () => {
 
                     {/* DOB */}
                     <label className='w-full flex flex-col gap-[6px]'>
+
                         <p className='text-richblack-5 font-normal text-sm'>
+
                             Date of Birth
+
                         </p>
 
-                        <input type="date"
+                        <input
+                            type="date"
                             name="DOB"
                             
                             min="1970-01-01"
@@ -157,6 +193,7 @@ export const ProfileInfoChange = () => {
                                 {errors.DOB.message}
                             </span>
                         }
+
                     </label>
 
                     {/* Gender */}
@@ -168,7 +205,8 @@ export const ProfileInfoChange = () => {
 
                         </p>
 
-                        <select name='gender'
+                        <select
+                            name='gender'
                             className='w-full flex p-3 items-center border-richblack-5
                                 self-stretch bg-richblack-700 rounded-lg border-b-[1px]
                                 text-richblack-200 text-base font-medium'
@@ -188,7 +226,10 @@ export const ProfileInfoChange = () => {
                                 {errors.gender.message}
                             </span>
                         }
+
                     </label>
+
+
                 </div>
 
 
@@ -199,10 +240,13 @@ export const ProfileInfoChange = () => {
                     <label className='w-full flex flex-col gap-[6px]'>
 
                         <p className='text-richblack-5 font-normal text-sm'>
+
                             Phone Number
+
                         </p>
 
-                        <input type="tel"
+                        <input
+                            type="tel"
                             placeholder={"Enter Phone Number"}
                             name="contact"
                             className='flex p-3 items-center gap-3  border-richblack-5 
@@ -220,6 +264,10 @@ export const ProfileInfoChange = () => {
                                 minLength: {
                                     value: 8,
                                     message: "*invalid phone number"
+                                },
+                                pattern: {
+                                    value: '^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$',
+                                    message: "*invalid phone number"
                                 }
                             })}
                             defaultValue={user?.additionalDetails?.contact}
@@ -231,6 +279,7 @@ export const ProfileInfoChange = () => {
                                 {errors.contact.message}
                             </span>
                         }
+
                     </label>
 
                     {/* Bio Details */}
@@ -242,7 +291,8 @@ export const ProfileInfoChange = () => {
 
                         </p>
 
-                        <textarea type="text"
+                        <textarea
+                            type="text"
                             rows={1}
                             placeholder={user?.about ?? "Enter Bio Details"}
                             name="about"
@@ -255,7 +305,11 @@ export const ProfileInfoChange = () => {
                             defaultValue={user?.additionalDetails?.about}
 
                         />
+
+
+
                     </label>
+
 
                 </div>
 
@@ -263,18 +317,26 @@ export const ProfileInfoChange = () => {
                 <div className='flex gap-5 lg:justify-end'>
 
                     <div>
+
                         <EditButton type={"submit"} active={true}>
                             Save
                         </EditButton>
+
                     </div>
 
+
                     <div >
+
                         <EditButton type={"reset"} active={false}>
                             Cancel
                         </EditButton>
+
                     </div>
+
                 </div>
+
             </form>
+
         </div>
     )
 }

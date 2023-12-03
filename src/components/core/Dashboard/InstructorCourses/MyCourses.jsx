@@ -1,21 +1,22 @@
 import React from 'react'
-import { useState } from 'react'
 import { useEffect } from 'react'
+import { useState } from 'react'
 import { TbPlus } from 'react-icons/tb'
-import { useSelector } from 'react-redux'
-import { CourseTable } from './CourseTable'
-import IconBtn from '../../../common/IconBtn'
 import { useNavigate } from 'react-router-dom'
 import { fetchInstructorCourses } from '../../../../services/operations/courseAPI'
+import { useSelector } from 'react-redux'
+import IconBtn from '../../../common/IconBtn'
+import { CourseTable } from './CourseTable'
 
 export const MyCourses = () => {
-    const navigate = useNavigate();
     const [courses, setCourses] = useState([])
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate();
     const { token } = useSelector((state) => state.auth)
 
     const getInstructorCourses = async () => {
         setLoading(true)
+        // console.log("token ", token)
         const result = await fetchInstructorCourses(token)
         if (result) {
             setCourses(result)
@@ -65,6 +66,7 @@ export const MyCourses = () => {
                                         <CourseTable courses={courses} setCourses={setCourses} />)
                             }
                         </>
+
                     </div>
             }
         </>

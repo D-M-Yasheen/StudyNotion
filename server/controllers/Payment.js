@@ -70,6 +70,7 @@ exports.capturePayment = async (req, res) => {
         })
     }
     catch (error) {
+        console.log(error);
         return res.status(500).json({ success: false, mesage: "Could not Initiate Order" });
     }
 }
@@ -82,6 +83,7 @@ exports.verifySignature = async (req, res) => {
     const razorpay_signature = req.body?.razorpay_signature;
     const courses = req.body?.courses;
     const userId = req.payload.id;
+
 
     if (!razorpay_order_id ||
         !razorpay_payment_id ||
@@ -158,6 +160,7 @@ const enrollStudents = async (courses, userId, res) => {
             )
 
         } catch (error) {
+            console.log(error);
             return res.status(500).json({ success: false, message: error.message });
         }
     }

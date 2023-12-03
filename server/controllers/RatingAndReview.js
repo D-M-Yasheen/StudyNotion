@@ -32,6 +32,13 @@ exports.createRating = async (req, res) => {
             })
         }
 
+        
+
+
+        // if(courseDetails.ratingAndReview.includes(userId)) {
+
+        // }
+
         const alreadyReviewed = await RatingAndReview.findOne({ user: userId, course: courseId });
 
         if (alreadyReviewed) {
@@ -52,7 +59,7 @@ exports.createRating = async (req, res) => {
         )
 
 
-        await Course.findByIdAndUpdate(
+        const courseUpdate = await Course.findByIdAndUpdate(
             { _id: courseId },
             { $push: { ratingAndReviews: createNewRating._id } },
             { new: true },
@@ -75,6 +82,8 @@ exports.createRating = async (req, res) => {
 
 exports.getAverageRating = async (req, res) => {
     try {
+
+
         const { courseId } = req.body;
 
         const result = await RatingAndReview.aggregate([
@@ -128,6 +137,8 @@ exports.getAllRating = async (req, res) => {
                 path: "course",
                 select: "courseName"
             }).exec();
+
+
 
         return res.status(200).json({
             success: true,

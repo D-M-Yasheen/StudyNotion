@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
-export const CourseRequirement = ({ name, register, errors, setValue }) => {
+export const CourseRequirement = ({ name, register, errors, setValue, getValues }) => {
     const [requirement, setRequirement] = useState("");
     const [requirementList, setRequirementList] = useState([]);
     const { course, editCourse } = useSelector((state) => state.course)
@@ -22,6 +22,7 @@ export const CourseRequirement = ({ name, register, errors, setValue }) => {
 
     const addRequirementHandler = (e) => {
         e.preventDefault()
+        // console.log("add requirement : ",requirementList)
         if (requirement && !requirementList.includes(requirement)) {
             setRequirementList([...requirementList, requirement]);
             setRequirement("");
@@ -30,6 +31,8 @@ export const CourseRequirement = ({ name, register, errors, setValue }) => {
     }
 
     const removeRequirementHandler = (index) => {
+        // console.log("remove requirement : ",requirementList)
+
         const update = [...requirementList];
         update.splice(index, 1);
         setRequirementList(update);
@@ -77,7 +80,10 @@ export const CourseRequirement = ({ name, register, errors, setValue }) => {
                                         clear
                                     </button>
                                 </div>
-                            ))}
+
+                            )
+                            )
+                        }
                     </ul>
                 )
             }

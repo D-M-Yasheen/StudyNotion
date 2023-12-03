@@ -15,3 +15,5 @@ exports.dbConnection = () => {
             process.exit(1);
         })
 }
+
+// module.exports = dbConnection;

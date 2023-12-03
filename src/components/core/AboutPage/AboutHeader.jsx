@@ -7,8 +7,9 @@ import aboutus3 from "../../../assets/Images/aboutus3.webp"
 export const AboutHeader = () => {
   return (
     <>
+
       <div className='relative pt-20 lg:pb-64 md:pb-64 pb-36 w-full mx-auto 
-              flex flex-col gap-[52px] bg-richblack-700'>
+                      flex flex-col gap-[52px] bg-richblack-700'>
 
         {/* Upper Heading Section  */}
 
@@ -33,8 +34,8 @@ export const AboutHeader = () => {
 
         {/* Image Section */}
         <div className='absolute w-10/12 flex justify-center items-center
-                lg:gap-10 md:gap-5 gap-3 bottom-0 left-[50%] translate-x-[-50%] 
-                translate-y-[35%]'>
+                        lg:gap-10 md:gap-5 gap-3 bottom-0 left-[50%] translate-x-[-50%] 
+                        translate-y-[35%]'>
 
           <img src={aboutus1}
             className="w-1/3 aspect-auto" />

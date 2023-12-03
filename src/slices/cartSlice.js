@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast"
 
+
 const initialState = {
     cart: localStorage.getItem("cart") ?
         JSON.parse(localStorage.getItem("cart")) : [],
@@ -19,14 +20,16 @@ const cartSlice = createSlice({
         addToCart: (state, action) => {
             const course = action.payload;
             const index = state.cart.findIndex((item) => item._id === course._id)
-            // console.log("cart index : ", index)
+            console.log("cart index : ", index)
             if (index >= 0) {
                 toast.error("Course already in cart")
                 return
             }
 
             state.cart.push(course)
+
             state.totalItems++;
+
             state.total += course.price;
 
             localStorage.setItem("cart", JSON.stringify(state.cart))
@@ -39,7 +42,7 @@ const cartSlice = createSlice({
         removeFromCart: (state, action) => {
             const course = action.payload;
             const index = state.cart.findIndex((item) => item._id === course._id)
-            // console.log("cart index : ", index)
+            console.log("cart index : ", index)
             if (index >= 0) {
                 
                 state.totalItems--;
@@ -52,6 +55,9 @@ const cartSlice = createSlice({
     
                 toast.success("Course removed from cart")
             }
+
+            
+
         },
 
         resetCart: (state) => {
@@ -66,5 +72,8 @@ const cartSlice = createSlice({
     }
 })
 
+
+
 export const { addToCart, removeFromCart, resetCart } = cartSlice.actions
+
 export default cartSlice.reducer

@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { FaShareSquare } from 'react-icons/fa'
+import IconBtn from '../../common/IconBtn';
+import { AiFillCaretRight } from 'react-icons/ai'
+import { FiCornerDownRight } from 'react-icons/fi'
 import copy from 'copy-to-clipboard';
 import { toast } from 'react-hot-toast';
-import { useSelector } from 'react-redux';
-import IconBtn from '../../common/IconBtn';
-import { useNavigate } from 'react-router-dom'
-import { FaShareSquare } from 'react-icons/fa'
-import { FiCornerDownRight } from 'react-icons/fi'
 
 
 export const CourseDetailCard = ({ courseDetails, handlerBuyCourse, handleAddToCart }) => {
     const navigate = useNavigate()
     const { user } = useSelector((state) => state.profile)
+
+
     const handleShare = () => {
         copy(window.location.href)
         toast.success("link copied")

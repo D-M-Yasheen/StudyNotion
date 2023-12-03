@@ -41,8 +41,10 @@ export const AboutStat = () => {
               </p>
 
             </div>
+
           ))
         }
+
       </div>
     </section>
   )

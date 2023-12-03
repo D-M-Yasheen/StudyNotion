@@ -3,13 +3,20 @@ const OTP = require("../models/OTP");
 const Profile = require("../models/Profile");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const cookie = require("cookie-parser");
+const mailSender = require("../utils/mailSender")
 const OTPGenerator = require("otp-generator");
+const { response } = require("express");
 require("dotenv").config();
 
-exports.sendOTP = async (req, res) => {
 
+
+exports.sendOTP = async (req, res) => {
+    console.log("send otp controller is running..")
     try {
         const { email } = req.body;
+
+        console.log(`SentOTP to ${email}`)
 
         if (!email) {
             return res.status(401).json({
@@ -45,6 +52,7 @@ exports.sendOTP = async (req, res) => {
             result = await OTP.findOne({ otp: otp });
         }
 
+        console.log("Your OTP is : ", otp)
 
         const otpPayload = { email, otp }
 
@@ -113,6 +121,8 @@ exports.signUp = async (req, res) => {
 
         const hashPassword = await bcrypt.hash(password, 10);
 
+        console.log("your hash password ", hashPassword)
+
         let approved = accountType === "Instructor" ? false : true;
 
         const profileDetails = await Profile.create({
@@ -133,6 +143,8 @@ exports.signUp = async (req, res) => {
             image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName[0]}${lastName[0]}`
         })
 
+        console.log("user details : ", createUser)
+
         await OTP.findOneAndDelete({ otp: otp })
 
         return res.status(200).json({
@@ -152,6 +164,7 @@ exports.signUp = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
+
         const { email, password } = req.body;
 
         if (!email || !password) {
@@ -169,6 +182,8 @@ exports.login = async (req, res) => {
                 message: "User is not registered yet."
             })
         }
+
+        // console.log(password, user.password)
 
         if (!await bcrypt.compare(password, user.password)) {
             return res.status(401).json({

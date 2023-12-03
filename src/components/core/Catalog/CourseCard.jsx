@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { avgRating } from '../../../utils/avgRating'
 
 export const CourseCard = ({ Course }) => {
+  const Review_Count = 3.5
+
   const [ratingCount, setRatingCount] = useState(0);
 
   useEffect(() => {
@@ -13,6 +15,8 @@ export const CourseCard = ({ Course }) => {
     setRatingCount(count)
 
   }, [Course])
+
+  // console.log("Course in CourseCard", Course)
 
   return (
     <Link to={`/course/${Course?._id}`}>

@@ -7,6 +7,8 @@ const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const CourseProgress = require("../models/CourseProgress");
 const { convertSectionToDuration } = require("../utils/secToDuration");
 require("dotenv").config();
+const mongoose = require("mongoose");
+
 
 exports.createCourse = async (req, res) => {
     try {
@@ -35,6 +37,12 @@ exports.createCourse = async (req, res) => {
                 message: "Error will fetching thumbnail."
             })
         }
+
+        // tag = JSON.parse(tag)
+        // instructions = JSON.parse(instructions)
+
+        // console.log("tag", tag)
+        // console.log("instructions", instructions)
 
         if (
             !courseName ||
@@ -127,6 +135,8 @@ exports.createCourse = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: error.message,
+
+
         })
     }
 }
@@ -148,7 +158,9 @@ exports.editCourse = async (req, res) => {
             return res.status(404).json({ error: "Course not found" })
         }
 
+        // If Thumbnail Image is found, update it
         if (req.files) {
+            console.log("thumbnail update")
             const thumbnail = req.files.thumbnailImage
             const thumbnailImage = await uploadImageToCloudinary(
                 thumbnail,
@@ -190,7 +202,12 @@ exports.editCourse = async (req, res) => {
             }
         }
 
-        await course.save();
+
+
+        const newCourse = await course.save();
+
+
+
 
         const updatedCourse = await Course.findOne({
             _id: courseId,
@@ -265,9 +282,9 @@ exports.getCourseDetails = async (req, res) => {
                     path: "subSection"
                 }
             })
-            .populate("ratingAndReview")
+            // .populate("ratingAndReview")
             .populate("category")
-            .populate("studentEnrolled")
+            // .populate("studentEnrolled")
             .exec();
 
         if (!courseDetails) {
@@ -320,6 +337,8 @@ exports.getFullCourseDetails = async (req, res) => {
             courseId: courseId,
             userId: userId
         })
+
+        console.log("courseProgressCount : ", courseProgressCount)
 
         if (!courseDetails) {
             return res.status(400).json({
@@ -405,15 +424,17 @@ exports.deleteCourse = async (req, res) => {
             const sectionDetails = await Section.findById({ _id: sectionId })
 
             sectionDetails.subSection.forEach(async (id) => {
-                await SubSection.findByIdAndDelete({ _id: id })
+
+                console.log(id)
+                const deleteAllSubSection = await SubSection.findByIdAndDelete({ _id: id })
             })
 
-            await Section.findByIdAndDelete({ _id: sectionId });
+            const deleteFromSection = await Section.findByIdAndDelete({ _id: sectionId });
         })
 
         const categoryId = coureseDetails?.category;
 
-        await Category.findByIdAndUpdate(
+        const deleteFromCategory = await Category.findByIdAndUpdate(
             { _id: categoryId },
             {
                 $pull: {
@@ -423,7 +444,10 @@ exports.deleteCourse = async (req, res) => {
             { new: true },
         )
 
+
         const deleteFromCourse = await Course.findByIdAndDelete({ _id: courseId });
+
+
 
         res.status(200).json({
             success: true,

@@ -4,13 +4,19 @@ import { useState } from 'react'
 import { RxCross2 } from 'react-icons/rx'
 import { useSelector } from 'react-redux';
 
-export const CourseTag = ({ name, register, errors, setValue }) => {
+
+
+export const CourseTag = ({ name, register, errors, setValue, getValues }) => {
+
     const [tags, setTags] = useState([]);
     const { editCourse, course } = useSelector((state) => state.course)
+
     useEffect(() => {
         if (editCourse) {
+            // console.log(course)
             setTags(JSON.parse(course?.tag))
         }
+
         register(name, {
             required: true,
             validate: (value) => value.length > 0
@@ -21,10 +27,15 @@ export const CourseTag = ({ name, register, errors, setValue }) => {
         setValue(name, tags)
     }, [tags])
 
+
+
     const addTagHandler = (e) => {
+
         if (e.key === "Enter" || e.key === ",") {
             e.preventDefault();
+
             const tagValue = e.target.value.trim();
+
             if (tagValue && !tags.includes(tagValue)) {
                 const newTags = [...tags, tagValue]
                 setTags(newTags)
@@ -34,8 +45,11 @@ export const CourseTag = ({ name, register, errors, setValue }) => {
     }
 
     const removeTagHandler = (index) => {
-        const updateTags = tags.filter((data, i) => i !== index && data)
+
+        const updateTags = tags.filter((data, i) => i !== index &&  data)
+
         setTags(updateTags)
+
     }
 
     return (

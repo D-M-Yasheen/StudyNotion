@@ -1,28 +1,55 @@
 import React, { useEffect, useState } from 'react'
+
 import { SectionDetails } from './SectionDetails';
 
 export const ShowLecture = ({ courseContent }) => {
 
     const [allActiveSections, setAllActiveSections] = useState([])
+
+    // const handleActive = (id) => {
+    //     // console.log("active Status : ", activeStatus)
+
+    //     // console.log("ans : ", id)
+
+    //     let result = activeStatus?.find((dataId) => dataId._id === id)
+
+    //     setActiveStatus([...activeStatus, id])
+
+    //     console.log("active Status : ", result)
+
+
+    // }
+
     const handleAllActiveSection = (id) => {
 
         setAllActiveSections(allActiveSections?.includes(id) ?
             allActiveSections.filter((i) => i !== id) :
             [...allActiveSections, id])
+
+        console.log("All Active Section : ", allActiveSections)
     }
+
+
     const [totalLectures, setTotalLectures] = useState(0)
     const [totalSection, setTotalSection] = useState(0)
+
+    // console.log("entire active state : ", activeStatus)
 
     useEffect(() => {
 
         setTotalSection(courseContent?.length || 0)
+
         let total = 0;
+
         courseContent?.forEach((section) => (total += section?.subSection?.length || 0))
+
         setTotalLectures(total);
+
     }, [courseContent])
 
     return (
         <>
+
             <div className=' w-full flex flex-col gap-2 '>
 
                 <h1 className=' text-2xl font-semibold'>
@@ -57,6 +84,7 @@ export const ShowLecture = ({ courseContent }) => {
                     ))
                 }
             </div>
+
         </>
     )
 }

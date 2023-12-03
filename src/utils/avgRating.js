@@ -6,7 +6,7 @@ export const avgRating = (ratingArr) => {
         return acc
     }, 0)
 
-    // console.log("total rating counrt ", totalReviewCount)
+    console.log("total rating counrt ", totalReviewCount)
 
     const multiplier = Math.pow(10, 1)
 

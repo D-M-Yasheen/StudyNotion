@@ -58,12 +58,15 @@ exports.resetPasswordToken = async (req, rest) => {
 
 exports.resetPassword = async (req, rest) => {
     try {
-        const { password, token } = req.body;
+        const { password, confirmPassword, token } = req.body;
 
         const regLow = /[a-z]/
         const regUp = /[A-Z]/
         const regNum = /[0-9]/
         const regSpe = /[^A-Za-z 0-9]/;
+
+
+
 
         if (!regLow.test(password) ||
             !regUp.test(password) ||
@@ -76,6 +79,10 @@ exports.resetPassword = async (req, rest) => {
                 message: "Weak password"
             })
         }
+
+        // console.log(token)
+
+
         const user = await User.findOne({ token: token });
 
         if (!user) {
