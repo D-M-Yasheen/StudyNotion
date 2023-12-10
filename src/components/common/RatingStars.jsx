@@ -27,20 +27,20 @@ export const RatingStars = ({ Review_Count, Star_Size }) => {
     return (
         <div className="flex gap-1 text-yellow-100">
             {
-                [...new Array(starCount.full)].map((_,i) => (
-                    <TiStarFullOutline key={i} size={Star_Size || 20}/>
+                [...new Array(starCount.full)].map((_, i) => (
+                    <TiStarFullOutline key={i} size={Star_Size || 20} />
                 ))
             }
 
-{
-                [...new Array(starCount.half)].map((_,i) => (
-                    <TiStarHalfOutline key={i} size={Star_Size || 20}/>
+            {
+                [...new Array(starCount.half)].map((_, i) => (
+                    <TiStarHalfOutline key={i} size={Star_Size || 20} />
                 ))
             }
 
-{
-                [...new Array(starCount.empty)].map((_,i) => (
-                    <TiStarOutline key={i} size={Star_Size || 20}/>
+            {
+                [...new Array(starCount.empty)].map((_, i) => (
+                    <TiStarOutline key={i} size={Star_Size || 20} />
                 ))
             }
         </div>

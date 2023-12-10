@@ -12,7 +12,7 @@ export const ContactUsSection = () => {
                     Get in Touch
                 </h1>
 
-                <p className='text-richblack-300 text-base font-medium text-center self-stretch'>
+                <p className='w-4/5 mx-auto text-richblack-300 text-base font-medium text-center self-stretch'>
                     We’d love to here for you, Please fill out this form.
                 </p>
 

@@ -54,7 +54,7 @@ export const Footer = () => {
           <section className='w-full flex lg:mr-12 gap-3 lg:w-1/2 justify-between'>
 
             {/* Company */}
-            <div className='w-1/3 flex flex-col gap-5'>
+            <div className='w-[30%] flex flex-col gap-5'>
 
               {/* Logo */}
               <img src={Logo}
@@ -230,7 +230,7 @@ export const Footer = () => {
           <section className='w-full flex lg:ml-3 lg:w-1/2 justify-between'>
 
             {/* Subjects  */}
-            <div className='flex flex-col gap-3 w-1/3'>
+            <div className='flex flex-col gap-3 w-[30%]'>
 
               {/* Section Name */}
 

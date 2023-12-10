@@ -34,18 +34,17 @@ export const LearningGrid = () => {
   return (
     <>
 
-      <div className='w-11/12 px-20 py-24 mx-auto grid place-items-center 
+      <div className='w-11/12 lg:px-20 py-24 md:px-10 mx-auto grid place-items-center 
       lg:grid-cols-4 grid-cols-1'>
         {
           LearningGridDetails.map((element, index) => (
             index === 0 ?
               (
                 <div key={index}
-                  className='lg:w-full flex flex-col gap-4 lg:mb-0 mb-4 w-[400px] h-[300px] 
-                  lg:col-span-2 lg:pr-[52px] '>
+                  className='w-full flex flex-col gap-4 lg:mb-0 pb-8
+                   min-h-[300px] lg:col-span-2 lg:pr-2'>
 
-                  <h1 className='text-richblack-5 text-4xl font-bold
-                   leading-[44px] -tracking-[0.72px]'>
+                  <h1 className='text-richblack-5 lg:text-4xl text-3xl font-bold -tracking-[0.72px]'>
                     
                     {element.heading}
 
@@ -73,13 +72,10 @@ export const LearningGrid = () => {
 
                 </div>
               )
-
               :
-
-
               (
                 <div key={index}
-                  className={`p-8 h-[300px] flex flex-col gap-6 lg:w-full w-[400px]
+                  className={`p-4 lg:w-full h-[300px] md:w-[400px] sm:w-[400px] w-full flex flex-col gap-6
                   ${index & 1 ? "bg-richblack-700" : "bg-richblack-800"}
                   ${index === 3 ? "lg:col-start-2" : ""}
                   `}>
@@ -93,13 +89,9 @@ export const LearningGrid = () => {
                   </p>
 
                 </div>
-              )
-
-          ))
+              )))
         }
-
       </div>
-
     </>
   )
 }

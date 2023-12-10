@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { CartTable } from './CartTable'
-import { useDispatch, useSelector } from 'react-redux'
-import { resetCart } from '../../../../slices/cartSlice'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { buyCourse } from '../../../../services/operations/studentFeatureAPI'
 
 export const Cart = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { user } = useSelector((state) => state.profile)
-    const { token } = useSelector((state) => state.auth)
-    const { cart, totalItems, total } = useSelector((state) => state.cart);
     const [loading, setLoading] = useState(false)
-
+    const { token } = useSelector((state) => state.auth)
+    const { user } = useSelector((state) => state.profile)
+    const { cart, totalItems, total } = useSelector((state) => state.cart);
     const handlerBuyNow = async () => {
         if (token) {
             setLoading(true)
@@ -32,11 +30,8 @@ export const Cart = () => {
 
                     {/* Heading */}
                     <div className='flex gap-2 justify-between py-6'>
-
                         <h1 className=' text-richblack-5 font-medium text-3xl tracking-wider'>
-
                             Cart
-
                         </h1>
                     </div>
 
@@ -58,11 +53,10 @@ export const Cart = () => {
                                 <div className='flex lg:flex-row flex-col justify-between gap-10'>
 
                                     {/* For small screen */}
-                                    <>
+                                    {/* <>
                                         {
                                             <div className='max-w-[20rem] h-fit lg:hidden flex flex-col p-6 gap-4 rounded-lg bg-richblack-800
                                                 border-[1px] border-richblack-700 items-start'>
-
                                                 <div className='flex flex-col gap-1 items-start'>
                                                     <p className=' text-sm font-semibold text-richblack-200'>
                                                         Total:
@@ -76,10 +70,9 @@ export const Cart = () => {
                                                 text-richblack-900 text-base font-medium'>
                                                     Buy Now
                                                 </button>
-
                                             </div>
                                         }
-                                    </>
+                                    </> */}
 
                                     <div className='w-full flex flex-col py-6 gap-8'>
                                         {
@@ -98,9 +91,9 @@ export const Cart = () => {
                                     </div>
 
                                     {/* For large screen */}
-                                    <>
+                                    <div className='max-w-max'>
                                         {
-                                            <div className='min-w-[18rem] h-fit hidden lg:flex flex-col p-6 gap-4 rounded-lg bg-richblack-800
+                                            <div className='w-[18rem] h-fit flex flex-col p-6 gap-4 rounded-lg bg-richblack-800
                                                 border-[1px] border-richblack-700 items-start'>
 
                                                 <div className='flex flex-col gap-1 items-start'>
@@ -119,14 +112,10 @@ export const Cart = () => {
 
                                             </div>
                                         }
-                                    </>
-
+                                    </div>
                                 </div>
                         }
-
                     </>
-
-
                 </div>
         }
         </>

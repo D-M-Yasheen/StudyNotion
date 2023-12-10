@@ -16,11 +16,11 @@ export const ContantUsForm = (prop) => {
 
     const submitHandler = async (data) => {
         try {
-            const response = { status: true };
-            console.log("Your form data")
-            console.log(data)
+            // const response = { status: true };
+            // console.log("Your form data")
+            // console.log(data)
         } catch (error) {
-            console.log("Error occured in form section", error);
+            // console.log("Error occured in form section", error);
         }
     }
 
@@ -128,7 +128,7 @@ export const ContantUsForm = (prop) => {
                                 message: "Email required"
                             },
                             pattern: {
-                                value: "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/",
+                                value: "/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,})$/",
                                 message: "Invalid email"
                             }
                         })}

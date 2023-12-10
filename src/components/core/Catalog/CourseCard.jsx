@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { RatingStars } from '../../common/RatingStars'
 import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import { avgRating } from '../../../utils/avgRating'
+import { RatingStars } from '../../common/RatingStars';
 
 export const CourseCard = ({ Course }) => {
-  const Review_Count = 3.5
-
   const [ratingCount, setRatingCount] = useState(0);
 
   useEffect(() => {
 
     const count = avgRating(Course?.ratingAndReviews)
+    // console.log(Course?.ratingAndReviews)
 
     setRatingCount(count)
 
   }, [Course])
-
-  // console.log("Course in CourseCard", Course)
 
   return (
     <Link to={`/course/${Course?._id}`}>
@@ -39,9 +36,9 @@ export const CourseCard = ({ Course }) => {
 
 
             <div className='flex gap-2 text-yellow-100 font-semibold text-base
-              items-center justify-start'>
-              
-              <p>{ratingCount || 0}</p>
+                    items-center justify-start'>
+
+              <p>{`${ratingCount || 0}.0`}</p>
               <RatingStars Review_Count={ratingCount || 0} />
             </div>
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
+import { ShowCards } from './ShowCards'
+import { CTAButton } from './CTAButton'
 import { NavLink } from 'react-router-dom'
 import { FaArrowRight } from "react-icons/fa"
-import { CTAButton } from './CTAButton'
-import Banner from "../../../assets/Images/banner.mp4"
 import { CodeBlocks } from '../HomePage/CodeBlocks'
+import Banner from "../../../assets/Images/banner.mp4"
 import { HomePageExplore } from '../../../data/homepage-explore'
-import { ShowCards } from './ShowCards'
 
 const tabNames = ["Free", 'New to coding', "Most popular", "Skills paths", "Career paths"]
 
@@ -17,11 +17,8 @@ export const HomeSection1 = () => {
     const changeCardsHandler = (value) => {
         setCurrentTab(value);
         const result = HomePageExplore.filter((element) => element.tag === value);
-        console.log(result[0].courses)
         setShowCards(result[0].courses);
         setHighlightedCards(result[0].courses[0].heading)
-        console.log("showCards : ", showCards);
-        console.log("highlighted card : ", highlightedCards)
     }
 
 
@@ -43,22 +40,16 @@ export const HomeSection1 = () => {
                         <div className='flex flex-row group-hover:bg-richblack-900
                         lg:items-center items-start justify-center px-10 py-[5px]
                         gap-2 rounded-full transition-all duration-200'>
-
                             <p>
                                 Become an Instructor
                             </p>
-
                             <FaArrowRight />
-
                         </div>
-
                     </button>
-
                 </NavLink>
 
                 <h1 className='lg:text-center text-left
-                text-4xl font-semibold mt-7
-                '>
+                text-4xl font-semibold mt-7'>
                     Empower Your Future with
                     <span className='custom-highligter'>
                         {" Coding Skills "}
@@ -68,8 +59,7 @@ export const HomeSection1 = () => {
                 <div>
                     <p className='mt-4 mx-auto lg:w-10/12
                     lg:text-center text-left text-lg font-semibold 
-                    text-richblack-300
-                    '>
+                    text-richblack-300'>
                         With our online coding courses,
                         you can learn at your own pace,
                         from anywhere in the world,
@@ -79,35 +69,29 @@ export const HomeSection1 = () => {
                     </p>
                 </div>
 
-                <div className='flex flex-row gap-7 mt-8
-                '>
+                <div className='flex flex-row gap-7 mt-8'>
                     <CTAButton
                         active={true}
-                        linkto={"/signup"}
-                    >
+                        linkto={"/signup"}>
                         Learn More
                     </CTAButton>
 
                     <CTAButton
                         active={false}
-                        linkto={"/login"}
-                    >
+                        linkto={"/login"}>
                         Book a Demo
                     </CTAButton>
                 </div>
             </div>
 
             {/* Video */}
-            <video className='mx-auto my-12 w-full lg:w-10/12 aspect-video shadow-custom'
+            <video className='mx-auto my-12 w-full lg:w-9/12 aspect-video shadow-custom'
                 muted loop autoPlay>
-
                 <source src={Banner} type='video/mp4' />
-
             </video>
 
             {/* Code Block Section 1 */}
             <div className='w-full mx-auto my-12 py-16'>
-
                 <CodeBlocks
                     position={"lg:flex-row flex-col"}
                     heading={
@@ -226,16 +210,18 @@ export const HomeSection1 = () => {
                 </div>
 
                 {/* Tabs */}
-                <div className='flex flex-col items-center mx-auto'>
+                <div className='flex lg:flex-col md:flex-col lg:items-center md:items-center
+                items-start mx-auto'>
 
-                    <ul className='flex items-center gap-2 w-fit rounded-full my-8 py-2 px-4 bg-richblack-800'>
+                    <ul className='flex lg:flex-row md:flex-row flex-col items-center gap-2 w-fit rounded-full my-8 py-2 
+                    lg:px-4 md:px-4 px-2 bg-richblack-800'>
 
                         {
                             tabNames.map((element, index) => {
 
                                 return (
                                     <li key={index}
-                                        className={` cursor-pointer rounded-full py-2 px-4
+                                        className={` cursor-pointer rounded-full py-2 lg:px-4 md:px-4 px-3
                                             transition-all duration-200 lg:text-sm text-xs
                                             ${currentTab === element ?
                                                 `bg-richblack-900 text-white scale-110 
@@ -256,13 +242,9 @@ export const HomeSection1 = () => {
                         showCards={showCards}
                         highlightedCards={highlightedCards}
                         setHighlightedCards={setHighlightedCards} />
-
                 </div>
-
             </div>
-
             <div className=' h-24'></div>
-
         </section>
     )
 }

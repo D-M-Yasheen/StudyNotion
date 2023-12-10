@@ -15,7 +15,7 @@ export const fetchEnrolledStudentCourses = async (token) => {
             Authorisation: `Bearer ${token}`
         })
 
-        console.log("GET USER ENROLLED COURSES API RESPONSE...........", response);
+        // console.log("GET USER ENROLLED COURSES API RESPONSE...........", response);
 
         if (!response?.data?.success) {
             throw new Error("Could not fetch enrolled courses")
@@ -24,7 +24,7 @@ export const fetchEnrolledStudentCourses = async (token) => {
         return response?.data?.data
 
     } catch (error) {
-        console.log("GET USER ENROLLED COURSES API ERROR...........", error);
+        // console.log("GET USER ENROLLED COURSES API ERROR...........", error);
         toast.error(error.message)
     }
 }
@@ -40,7 +40,7 @@ export const fetchInstructorDetails = async (token) => {
                 Authorisation: `Bearer ${token}`
             })
 
-        console.log("GET_INSTRUCTOR_DASHBOARD_API_RESPONSE.........", response)
+        // console.log("GET_INSTRUCTOR_DASHBOARD_API_RESPONSE.........", response)
 
         if (!response?.data?.success) {
             throw new Error("Could not fetch enrolled courses")
@@ -48,7 +48,7 @@ export const fetchInstructorDetails = async (token) => {
 
         result = response?.data?.data
     } catch (error) {
-        console.log("GET_INSTRUCTOR_DASHBOARD_API_ERROR.........", error)
+        // console.log("GET_INSTRUCTOR_DASHBOARD_API_ERROR.........", error)
         toast.error("Could not fetch instructor details")
     }
 

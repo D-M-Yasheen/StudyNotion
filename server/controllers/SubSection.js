@@ -7,15 +7,12 @@ require("dotenv").config();
 
 exports.createSubSection = async (req, res) => {
     try {
-        const { sectionId, title, timeDuration, description } = req.body;
+        const { sectionId, title, description } = req.body;
 
         const video = req.files.videoFile;
 
-        console.log(video)
-
         if (!sectionId ||
             !title ||
-            // !timeDuration || 
             !description ||
             !video) {
             return res.status(401).json({
@@ -28,7 +25,6 @@ exports.createSubSection = async (req, res) => {
 
         const createNewSubSection = await SubSection.create({
             title,
-            // time: timeDuration, 
             description,
             videoUrl: uploadVideo.secure_url,
         });
@@ -64,8 +60,6 @@ exports.updateSubSection = async (req, res) => {
         const updates = req.body;
         const video = req?.files?.videoFile;
 
-
-
         if (!sectionId || !subSectionId) {
             return res.status(401).json({
                 success: false,
@@ -85,18 +79,6 @@ exports.updateSubSection = async (req, res) => {
 
         }
 
-        //    { const updateSubSection = await SubSection.findByIdAndUpdate(
-        //         { _id: subSectionId },
-        //         {
-        //             title,
-        //             // time: timeDuration,
-        //             description,
-        //             videoUrl: uploadVideo.secure_url
-        //         },
-        //         { new: true }
-        //     )}
-
-
         // Update only the fields that are present in the request body
         for (const key in updates) {
             if (updates.hasOwnProperty(key)) {
@@ -104,7 +86,7 @@ exports.updateSubSection = async (req, res) => {
             }
         }
 
-        const newSubSection = await subSection.save();
+        await subSection.save();
 
         const updateSection = await Section.findByIdAndUpdate(
             { _id: sectionId },
@@ -138,7 +120,7 @@ exports.deleteSubSection = async (req, res) => {
             })
         }
 
-        let updateSection = await Section.findByIdAndUpdate(
+        await Section.findByIdAndUpdate(
             { _id: sectionId },
             {
                 $pull: {
@@ -148,7 +130,7 @@ exports.deleteSubSection = async (req, res) => {
             { new: true }
         )
 
-        const deleteSubSection = await SubSection.findByIdAndDelete({ _id: subSectionId });
+        await SubSection.findByIdAndDelete({ _id: subSectionId });
 
         const updateSectionDetails = await Section.findByIdAndUpdate(
             { _id: sectionId },

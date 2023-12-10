@@ -1,27 +1,26 @@
 import React, { useState } from 'react'
-import { sidebarLinks } from "../../../data/dashboard-links"
-import { SideBarLink } from './SideBarLink'
-import { useDispatch, useSelector } from 'react-redux'
-import { VscSignOut } from 'react-icons/vsc'
-import { Navigate, useNavigate } from 'react-router-dom'
 import { Modal } from '../../common/Modal'
+import { SideBarLink } from './SideBarLink'
+import { VscSignOut } from 'react-icons/vsc'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { sidebarLinks } from "../../../data/dashboard-links"
 import { logout } from '../../../services/operations/authAPI'
-import { HiChevronDoubleRight, HiChevronDoubleLeft, HiChevronLeft, HiChevronRight } from "react-icons/hi";
-
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 export const SideBar = ({ showSideBar, setShowSideBar }) => {
-    const { user } = useSelector((state) => state.profile)
-    const [showModal, setShowModal] = useState(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(null);
+    const { user } = useSelector((state) => state.profile)
 
     return (
         <div className={`relative h-full w-full bg-richblack-800 
-        flex flex-col items-start gap-3 py-6 `}>
+                flex flex-col items-start gap-3 py-6 transition-all duration-200`}>
 
             <div className='w-full flex justify-end'>
                 <button className={`w-fit flex justify-end items-center px-3 py-4 
-                            cursor-pointer select-none transition-all duration-500
+                            cursor-pointer select-none transition-all duration-200
                             font-extrabold text-blue-100 text-2xl animate-trans-right
                             `}
                     onClick={() => setShowSideBar((prev) => !prev)}>
@@ -31,17 +30,14 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
                                 <HiChevronRight className='translate-x-9' />
                                 <HiChevronRight className='translate-x-5' />
                                 <HiChevronRight className='translate-x-1' />
-                                {/* <HiChevronDoubleRight /> */}
                             </div>
                             :
                             <div className='flex'>
                                 <HiChevronLeft className='translate-x-8'/>
                                 <HiChevronLeft className='translate-x-4'/>
                                 <HiChevronLeft className='translate-x-0'/>
-                                {/* <HiChevronDoubleLeft  /> */}
                             </div>
                     }
-
                 </button>
             </div>
 
@@ -56,9 +52,8 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
                 }
             </div>
 
-
             <div className='w-11/12 flex h-[1px] mx-auto my-3 gap-3 
-            self-stretch bg-richblack-600'>
+                    self-stretch bg-richblack-600'>
             </div>
 
             <div className='w-full'>
@@ -72,11 +67,7 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
                 } showSideBar={showSideBar} />
 
 
-                <div
-                    // className='w-full text-richblack-300 border-l-4
-                    //  border-richblack-800 flex px-6 py-2 justify-center 
-                    //  items-center gap-3 cursor-pointer select-none '
-                    className={`w-full text-richblack-300 flex gap-3 px-3 py-2 cursor-pointer
+                <div className={`w-full text-richblack-300 flex gap-3 px-3 py-2 cursor-pointer
                      select-none transition-all duration-200 border-l-4 border-richblack-800 `}
                     onClick={() => setShowModal({
                         text1: "Are You Sure?",
@@ -88,23 +79,15 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
                     })}>
 
                     <div className='flex items-start justify-start text-2xl'>
-
                         <VscSignOut />
-
                     </div>
 
                     <div className={`${showSideBar ? `w-full text-ellipsis whitespace-nowrap
                                     text-start`: 'hidden'}`}>
-
                         Log Out
-
                     </div>
-
                 </div>
-
             </div>
-
-
             {
                 (showModal !== null) && <Modal modalData={showModal} type={"logout"} />
 

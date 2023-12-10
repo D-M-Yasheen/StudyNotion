@@ -9,8 +9,6 @@ const {
 
 const {
     auth,
-    isInstructor,
-    isAdmin,
     isStudent
 } = require("../middlewares/auth");
 

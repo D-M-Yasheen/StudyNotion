@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { login } from '../../../services/operations/authAPI';
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 export const LoginForm = () => {
     const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const isTokenPresent = useSelector((state) => state.auth.token);
-
     const [loginInfo, setLoginInfo] = useState({
         email: "",
         password: ""
@@ -24,8 +21,6 @@ export const LoginForm = () => {
             }
         ))
     }
-
-
 
     const submitHandler = (event) => {
         event.preventDefault()
@@ -44,9 +39,7 @@ export const LoginForm = () => {
                     <label className='flex flex-col gap-1'>
 
                         <p className='text-sm font-normal text-richblack-5'>
-
                             Email Address
-
                             <sup className='mx-[2px] text-pink-200 text-xs'> * </sup>
 
                         </p>
@@ -58,9 +51,7 @@ export const LoginForm = () => {
                             placeholder='Enter email address'
                             onChange={(event) => loginHandler(event)}
 
-                            className='text-richblack-5
-                                          text-base p-3 border-b-2 
-                                          border-richblack-400
+                            className='text-richblack-5 text-base p-3 border-b-2 border-richblack-400
                                          bg-richblack-700 rounded-lg'
                         />
 
@@ -74,11 +65,8 @@ export const LoginForm = () => {
                     <label className='flex flex-col gap-1'>
 
                         <p className='text-sm font-normal text-richblack-5'>
-
                             Password
-
                             <sup className='mx-[2px] text-pink-200 text-xs'> * </sup>
-
                         </p>
 
                         <div className='w-full flex relative '>
@@ -90,28 +78,23 @@ export const LoginForm = () => {
                                 placeholder='Enter Password'
                                 onChange={(event) => loginHandler(event)}
                                 className='w-full text-richblack-5 
-                                            text-base p-3 border-b-2 
-                                            border-richblack-400
-                                             bg-richblack-700 rounded-lg'/>
+                                    text-base p-3 border-b-2 border-richblack-400 
+                                    bg-richblack-700 rounded-lg'/>
 
                             {showPassword ?
 
                                 <div className='text-richblack-300 absolute right-3 
-                                                top-[50%] -translate-y-[50%] bg-richblack-700'
+                                        top-[50%] -translate-y-[50%] bg-richblack-700'
                                     onClick={() => setShowPassword(false)}>
-
                                     <AiOutlineEyeInvisible fontSize={24} />
 
                                 </div>
                                 :
                                 <div className='text-richblack-300 absolute bg-richblack-700
-                                                right-3 top-[50%] -translate-y-[50%]'
+                                        right-3 top-[50%] -translate-y-[50%]'
                                     onClick={() => setShowPassword(true)}>
-
                                     <AiOutlineEye fontSize={24} />
-
                                 </div>
-
                             }
 
                         </div>
@@ -122,11 +105,8 @@ export const LoginForm = () => {
 
                         <NavLink to="/reset-password">
 
-                            <div
-                                className='w-fit flex justify-end selection:font-normal text-xs text-blue-100'>
-
+                            <div className='w-fit flex justify-end selection:font-normal text-xs text-blue-100'>
                                 Forgot password
-
                             </div>
 
                         </NavLink>
@@ -138,9 +118,9 @@ export const LoginForm = () => {
                 {/* Login Button */}
                 <button type='submit'
                     className='text-richblack-900 w-full select-none mt-5
-                                    rounded-lg bg-yellow-50 px-3 py-2 self-stretch-
-                                    text-center text-base font-medium shadow-inner
-                                    hover:scale-95 transition-all duration-200 '>
+                        rounded-lg bg-yellow-50 px-3 py-2 self-stretch-
+                        text-center text-base font-medium shadow-inner
+                        hover:scale-95 transition-all duration-200 '>
 
                     Sign in
 

@@ -133,10 +133,15 @@ module.exports = {
         "trans-right": {
           '0%, 100%': { transform: 'translateX(5px)' },
           '50%': { transform: 'translateX(-5px)' },
+        },
+        "trans-hii": {
+          '0%, 100%': { transform: 'rotate(-30deg)' },
+          '50%': { transform: 'rotate(-60deg)' },
         }
       },
       animation: {
         "trans-right": 'trans-right 2s ease-in-out infinite',
+        "hii": 'trans-hii 2s ease-in-out infinite',
       },
     },
   },

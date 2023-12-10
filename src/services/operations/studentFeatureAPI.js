@@ -3,7 +3,7 @@ import { studentEndpoints } from "../apis";
 import { apiConnector } from "../apiconnector";
 import rzpLogo from "../../assets/Logo/rzp_logo.png"
 import { setPaymentLoading } from "../../slices/courseSlice";
-import { removeFromCart, resetCart } from "../../slices/cartSlice";
+import { removeFromCart } from "../../slices/cartSlice";
 
 
 const { COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API } = studentEndpoints;
@@ -83,7 +83,7 @@ export const buyCourse = async (token, courses, userDetails, navigate, dispatch)
         // })
 
     } catch (error) {
-        console.log("PAYMENT API ERROR.....", error);
+        // console.log("PAYMENT API ERROR.....", error);
         toast.error(error.response.data.message);
     }
     finally{
@@ -105,7 +105,7 @@ const sendPaymentSuccessEmail = async (response, amount, token) => {
         })
 
     } catch (error) {
-        console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
+        // console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
     }
 }
 
@@ -115,7 +115,7 @@ const verifyPayment = async (bodyData, token, navigate, dispatch) => {
     dispatch(setPaymentLoading(true));
 
     try {
-        console.log("Go to verify payment .....", bodyData)
+        // console.log("Go to verify payment .....", bodyData)
         const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
             Authorisation: `Bearer ${token}`,
         })
@@ -140,7 +140,7 @@ const verifyPayment = async (bodyData, token, navigate, dispatch) => {
 
 
     } catch (error) {
-        console.log("PAYMENT VERIFY ERROR....", error);
+        // console.log("PAYMENT VERIFY ERROR....", error);
         toast.error("Could not verify Payment");
     }
     toast.dismiss(toastId);

@@ -27,7 +27,7 @@ export const updateProfilePic = (token, file) => {
                     Authorisation: `Bearer ${token}`
                 });
 
-            console.log("RESPONSE FROM UPDATE USER PROFILE PICTURE....", response?.data?.data);
+            // console.log("RESPONSE FROM UPDATE USER PROFILE PICTURE....", response?.data?.data);
 
             if (!response.data.success) {
                 throw new Error(response.data.message);
@@ -41,7 +41,7 @@ export const updateProfilePic = (token, file) => {
             toast.success("Profile picture updated successfully")
 
         } catch (error) {
-            console.log("ERROR OCCURED : ", error);
+            // console.log("ERROR OCCURED : ", error);
             toast.error(error);
         }
         toast.dismiss();
@@ -55,12 +55,12 @@ export const updateUserInfo = (token, data) => {
     return async (dispatch) => {
         toast.loading("loading...")
         try {
-            console.log("data we get : ", data)
+            // console.log("data we get : ", data)
             const response = await apiConnector("PUT", UPDATE_PROFILE_API, data, {
                 Authorisation: `Bearer ${token}`
             })
 
-            console.log("RESPONSE OF UPDATE USER INFO : ", response?.data);
+            // console.log("RESPONSE OF UPDATE USER INFO : ", response?.data);
 
             if (!response?.data?.success) {
                 throw new Error(response?.data?.message);
@@ -73,7 +73,7 @@ export const updateUserInfo = (token, data) => {
             toast.success("update successful");
 
         } catch (error) {
-            console.log("ERROR OCCURRED : ", error);
+            // console.log("ERROR OCCURRED : ", error);
             toast.dismiss();
             toast.error("failed");
         }
@@ -87,19 +87,19 @@ export const changePassword = (token, data) => {
         toast.loading("loading...");
         dispatch(setLoading(true));
         try {
-            console.log("password change data we got : ", data);
+            // console.log("password change data we got : ", data);
 
-            const response = await apiConnector("PUT", CHANGE_PASSWORD_API, data, {
+            await apiConnector("PUT", CHANGE_PASSWORD_API, data, {
                 Authorisation: `Bearer ${token}`
             })
 
-            console.log("RESPONSE WE GOT AFTER CHANGING THE PASSWORD:", response?.data);
+            // console.log("RESPONSE WE GOT AFTER CHANGING THE PASSWORD:", response?.data);
 
             toast.dismiss()
             toast.success("update successful");
 
         } catch (error) {
-            console.log("ERROR OCCURRED WHILE CHANGING THE PASSWORD : ", error);
+            // console.log("ERROR OCCURRED WHILE CHANGING THE PASSWORD : ", error);
             toast.dismiss();
             toast.error(error?.response?.data?.message);
         }
@@ -115,7 +115,7 @@ export function deleteProfile(token, navigate) {
         const response = await apiConnector("DELETE", DELETE_PROFILE_API, null, {
           Authorisation: `Bearer ${token}`,
         })
-        console.log("DELETE_PROFILE_API API RESPONSE............", response)
+        // console.log("DELETE_PROFILE_API API RESPONSE............", response)
   
         if (!response.data.success) {
           throw new Error(response.data.message)
@@ -123,7 +123,7 @@ export function deleteProfile(token, navigate) {
         toast.success("Profile Deleted Successfully")
         dispatch(logout(navigate))
       } catch (error) {
-        console.log("DELETE_PROFILE_API API ERROR............", error)
+        // console.log("DELETE_PROFILE_API API ERROR............", error)
         toast.error("Could Not Delete Profile")
       }
       toast.dismiss(toastId)

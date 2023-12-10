@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form'
 import { RxCross1 } from 'react-icons/rx'
-import toast from 'react-hot-toast';
+import IconBtn from "../../../../common/IconBtn"
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createSubSection, updateSubSection } from '../../../../../services/operations/courseAPI';
 import { setCourse } from '../../../../../slices/courseSlice';
 import { CourseThumbnail } from '../CourseInfo/CourseThumbnail';
-import IconBtn from "../../../../common/IconBtn"
-import ReactDOM from 'react-dom';
+import { createSubSection, updateSubSection } from '../../../../../services/operations/courseAPI';
 
 export const SubSectionModal = ({
   modalData,
@@ -19,38 +18,30 @@ export const SubSectionModal = ({
 
   const { register, handleSubmit, setValue, getValues, formState: { errors } } = useForm();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const { token } = useSelector((state) => state.auth);
   const { course } = useSelector((state) => state.course);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (edit || view) {
       setValue("lectureTitle", modalData?.title);
-      setValue("lectureDescription", modalData?.description);
-      // console.log("modal url video ", modalData.videoUrl)
       setValue("lectureVideo", modalData?.videoUrl);
+      setValue("lectureDescription", modalData?.description);
     }
   }, [])
 
   const isFormUpdated = () => {
     const currentValues = getValues();
-
-    // console.log("current value of sub section is : ", currentValues)
-
     if (currentValues.lectureTitle !== modalData.title ||
       currentValues.lectureDescription !== modalData.description ||
       currentValues.lectureVideo !== modalData.videoUrl) {
-
       return true
     }
-
     else
       return false
   }
 
   const onSubmit = async (data) => {
-
-    // console.log("current value of sub section is : ", data)
     if (view) return
 
     if (edit) {
@@ -63,16 +54,13 @@ export const SubSectionModal = ({
     }
 
     const formData = new FormData();
-
-    // console.log("COURSE ID ----> ", course._id)
-    formData.append("sectionId", modalData)
     formData.append("courseId", course._id)
+    formData.append("sectionId", modalData)
     formData.append("title", data.lectureTitle)
-    formData.append("description", data.lectureDescription)
     formData.append("videoFile", data.lectureVideo)
+    formData.append("description", data.lectureDescription)
 
     setLoading(true)
-
     const result = await createSubSection(formData, token)
 
     if (result) {
@@ -81,11 +69,8 @@ export const SubSectionModal = ({
       const updatedCourse = { ...course, 'courseContent': updatedCourseContent }
       dispatch(setCourse(updatedCourse))
     }
-
     setModalData(null)
-
     setLoading(false)
-
   }
 
   const handleEditSubSection = async (data) => {
@@ -109,9 +94,6 @@ export const SubSectionModal = ({
 
     setLoading(true)
 
-    // console.log("current video url is ---------> ", getValues('lectureVideo'))
-    // console.log("db video url is ---------> ", modalData.videoUrl)
-
     const result = await updateSubSection(formData, token)
 
     if (result) {
@@ -120,24 +102,21 @@ export const SubSectionModal = ({
       const updatedCourse = { ...course, 'courseContent': updatedCourseContent }
       dispatch(setCourse(updatedCourse))
     }
-
     setModalData(null)
-
     setLoading(false)
-
   }
 
 
   return (
     <div className='fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen 
-    place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm'>
+          place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm'>
 
       <div className='my-10 w-[40rem] max-w-[40rem] border-[1px] 
-      shadow-lg shadow-richblack-600 border-richblack-700 rounded-lg'>
+              shadow-lg shadow-richblack-600 border-richblack-700 rounded-lg'>
 
         <div className='flex justify-between items-center rounded-t-lg 
-        w-full gap-3 px-6 py-4 bg-richblack-700 border-b-[2px]
-      border-richblack-600'>
+                w-full gap-3 px-6 py-4 bg-richblack-700 border-b-[2px]
+              border-richblack-600'>
 
           <p className='text-white text-lg font-semibold'>
             {view ? "Viewing"
@@ -222,7 +201,8 @@ export const SubSectionModal = ({
                     value: true,
                     message: "**description is required"
                   }
-                })}></textarea>
+                })}>
+              </textarea>
               {
                 errors.lectureDescription &&
                 <span className='text-pink-200 text-xs'>{errors.lectureDescription.message}</span>
@@ -238,21 +218,15 @@ export const SubSectionModal = ({
                     <IconBtn
                       type="Submit"
                       text={loading ? "Loading..." : edit ? "Save Change" : "Save"}
-                      outline={true}
-                    >
+                      outline={true}>
                     </IconBtn>
                   </div>
                 )
               }
             </div>
-
           </div>
-
         </form>
-
       </div>
-
     </div>
-
   )
 }

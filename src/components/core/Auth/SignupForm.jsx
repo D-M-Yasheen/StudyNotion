@@ -1,11 +1,10 @@
-import react, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { BsInfoCircleFill } from "react-icons/bs"
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ACCOUNT_TYPE } from '../../../utils/constants'
 import { Tab } from '../../common/Tab'
-import { toast } from 'react-hot-toast'
 import { setSignupData } from '../../../slices/authSlice'
 import { sendOtp } from '../../../services/operations/authAPI'
 import { useForm } from 'react-hook-form'
@@ -54,15 +53,13 @@ export const SignupForm = () => {
     const {
         register,
         handleSubmit,
-        reset,
         watch,
         formState: {
-            errors,
-            isSubmitSuccessful
+            errors
         }
     } = useForm();
 
-    let password = watch("password", "")
+    watch("password", "")
 
 
     const signupForm = (data) => {
@@ -312,7 +309,7 @@ export const SignupForm = () => {
                                         value: true,
                                     },
                                     validate: (val) => {
-                                        if (watch('password') != val) {
+                                        if (watch('password') !== val) {
                                             return "*passwords not match";
                                         }
                                     }
@@ -320,28 +317,19 @@ export const SignupForm = () => {
                                 })}
                             />
 
-
                             {
                                 showConfirmPassword ?
-
                                     <div className='text-richblack-300 absolute right-3 
                                                 top-[50%] -translate-y-[50%] bg-richblack-700'
                                         onClick={() => setShowConfirmPassword(false)}>
-
-
                                         <AiOutlineEyeInvisible fontSize={24} />
-
                                     </div>
                                     :
-
                                     <div className={`text-richblack-300 absolute right-3 
                                                 top-[50%] -translate-y-[50%] bg-richblack-700`}
                                         onClick={() => setShowConfirmPassword(true)}>
-
                                         <AiOutlineEye fontSize={24} />
-
                                     </div>
-
                             }
 
                             {
@@ -359,9 +347,9 @@ export const SignupForm = () => {
                 {/* Signup button */}
                 <button type='submit'
                     className='text-richblack-900 w-full select-none mt-5
-                                rounded-lg bg-yellow-50 px-3 py-2 self-stretch-
-                                text-center text-base font-medium shadow-inner
-                                hover:scale-95 transition-all duration-200'>
+                        rounded-lg bg-yellow-50 px-3 py-2 self-stretch-
+                        text-center text-base font-medium shadow-inner
+                        hover:scale-95 transition-all duration-200'>
 
                     Create Account
 

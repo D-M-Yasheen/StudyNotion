@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { BsArrowLeft } from "react-icons/bs"
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import { GoCheckCircleFill } from "react-icons/go"
-import { MdRadioButtonUnchecked } from "react-icons/md"
 import { toast } from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
-import { updatePassword } from '../services/operations/authAPI'
+import { BsArrowLeft } from "react-icons/bs"
+import { GoCheckCircleFill } from "react-icons/go"
+import { MdRadioButtonUnchecked } from "react-icons/md"
 import { useLocation, useNavigate } from 'react-router-dom'
+import { updatePassword } from '../services/operations/authAPI'
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 const element = [
     {
@@ -32,30 +32,27 @@ const element = [
 ]
 
 export const UpdatePassword = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const navigate = useNavigate();
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [numberCheck, setNumberCheck] = useState(false)
+    const [miniCheck, setMiniCheck] = useState(false)
     const [lowerCheck, setLowerCheck] = useState(false)
     const [upperCheck, setUpperCheck] = useState(false)
+    const [numberCheck, setNumberCheck] = useState(false)
     const [specialCheck, setSpecialCheck] = useState(false)
-    const [miniCheck, setMiniCheck] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [passwordUpdated, setPasswordUpdated] = useState(false);
-    const navigate = useNavigate();
-
-    const location = useLocation();
-    const dispatch = useDispatch();
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     function passwordHandler(event) {
         setPassword(event.target.value)
-        console.log(password)
 
         const regLow = /[a-z]/
         const regUp = /[A-Z]/
         const regNum = /[0-9]/
         const regSpe = /[^A-Za-z 0-9]/;
-
 
         if (regLow.test(password)) setLowerCheck(true);
         else setLowerCheck(false);
@@ -71,7 +68,6 @@ export const UpdatePassword = () => {
 
         if (password.length >= 8) setMiniCheck(true);
         else setMiniCheck(false);
-
     }
 
     const submitHandler = () => {
@@ -79,23 +75,17 @@ export const UpdatePassword = () => {
             toast.error("Password not matched");
             return;
         }
-
         const token = location.pathname.split("/").at(-1);
-        console.log(token);
-
         dispatch(updatePassword(password, confirmPassword, token, setPasswordUpdated));
     }
 
     return (
-        <div className='w-[500px] mt-8 mx-auto'>
-
+        <div className='max-w-[500px] w-full mt-8 mx-auto'>
             <div className='w-full flex flex-col justify-start items-center p-8 gap-y-9'>
-
                 <div className='w-full flex flex-col gap-y-3'>
-
                     <h1 className='text-start text-richblack-5 font-semibold text-3xl'>
                         {!passwordUpdated ?
-                            'Choose  new password' :
+                            'Choose new password' :
                             "Reset complete!"
                         }
                     </h1>
@@ -107,18 +97,12 @@ export const UpdatePassword = () => {
                                 "All done! We have sent an email to m***********@gmail.com to confirm"
                         }
                     </p>
-
-
                 </div>
 
                 <div className='w-full flex flex-col gap-y-3'>
-
                     {!passwordUpdated &&
-
                         <div className='w-full mb-3'>
-
                             <form className='w-full'>
-
                                 <div className='flex flex-col gap-y-8'>
 
                                     {/* Create Password */}
@@ -131,11 +115,8 @@ export const UpdatePassword = () => {
                                                 <span className='mx-[2px] text-pink-200 text-sm'>
                                                     *
                                                 </span>
-
                                             </p>
-
                                         </div>
-
 
                                         <div className='w-full flex relative '>
                                             <input
@@ -165,7 +146,6 @@ export const UpdatePassword = () => {
                                                 </div>
                                             }
                                         </div>
-
                                     </label>
 
                                     {/* Confirm Password */}
@@ -210,113 +190,96 @@ export const UpdatePassword = () => {
                                                     </div>
                                             }
                                         </div>
-
                                     </label>
-
                                 </div>
                             </form>
 
                         </div>
                     }
                     {!passwordUpdated &&
-
-
                         <div className='w-full'>
-
-                            <ul className='w-full grid grid-cols-2 gap-x-3 gap-y-1 place-items-start'>
+                            <ul className='w-full grid min-[500px]:grid-cols-2 grid-cols-1 
+                            gap-2 place-items-start'>
 
                                 {/* Number check */}
-                                <li className='flex justify-center
-                                    items-center gap-x-2
-                                     font-normal text-xs 
-                                   text-richblack-100'>
+                                <li className='flex justify-center items-start gap-2 
+                                font-normal text-xs text-richblack-100'>
                                     {
                                         lowerCheck ?
-                                            <div className=' text-caribbeangreen-300'>
+                                            <div className=' text-caribbeangreen-300 py-[2px]'>
                                                 <GoCheckCircleFill />
                                             </div> :
-                                            <MdRadioButtonUnchecked />
+                                            <div className='py-[2px]'>
+                                                <MdRadioButtonUnchecked />
+                                            </div>
                                     }
-
-
                                     <p>{element[0].title}</p>
-
                                 </li>
 
                                 {/* Lower Check */}
-                                <li className='flex justify-center
-                                    items-center gap-x-2
-                                     font-normal text-xs 
-                                   text-richblack-100'>
+                                <li className='flex justify-center items-start gap-2
+                                        font-normal text-xs text-richblack-100'>
                                     {
                                         upperCheck ?
-                                            <div className=' text-caribbeangreen-300'>
+                                            <div className=' text-caribbeangreen-300 py-[2px]'>
                                                 <GoCheckCircleFill />
                                             </div> :
-                                            <MdRadioButtonUnchecked />
+                                            <div className='py-[2px]'>
+                                                <MdRadioButtonUnchecked />
+                                            </div>
                                     }
-
-
                                     <p>{element[1].title}</p>
 
                                 </li>
 
                                 {/* Upper Check */}
-                                <li className='flex justify-center
-                                    items-center gap-x-2
-                                     font-normal text-xs 
-                                   text-richblack-100'>
+                                <li className='flex justify-center items-start gap-2
+                                        font-normal text-xs text-richblack-100'>
                                     {
                                         numberCheck ?
-                                            <div className=' text-caribbeangreen-300'>
+                                            <div className=' text-caribbeangreen-300 py-[2px]'>
                                                 <GoCheckCircleFill />
                                             </div> :
-                                            <MdRadioButtonUnchecked />
+                                            <div className='py-[2px]'>
+                                                <MdRadioButtonUnchecked />
+                                            </div>
                                     }
-
-
                                     <p>{element[2].title}</p>
 
                                 </li>
 
                                 {/* Special Check */}
-                                <li className='flex justify-center
-                                    items-center gap-x-2
-                                     font-normal text-xs 
-                                   text-richblack-100'>
+                                <li className='flex justify-center items-start gap-2
+                                        font-normal text-xs text-richblack-100'>
                                     {
                                         specialCheck ?
-                                            <div className=' text-caribbeangreen-300'>
+                                            <div className=' text-caribbeangreen-300 py-[2px]'>
                                                 <GoCheckCircleFill />
                                             </div> :
-                                            <MdRadioButtonUnchecked />
+                                            <div className='py-[2px]'>
+                                                <MdRadioButtonUnchecked />
+                                            </div>
                                     }
-
-
                                     <p>{element[3].title}</p>
 
                                 </li>
 
                                 {/* Mini 8 Check */}
-                                <li className='flex justify-center
-                                    items-center gap-x-2
-                                     font-normal text-xs 
-                                   text-richblack-100'>
+                                <li className='flex justify-center items-start gap-2
+                                        font-normal text-xs text-richblack-100'>
                                     {
                                         miniCheck ?
-                                            <div className=' text-caribbeangreen-300'>
+                                            <div className=' text-caribbeangreen-300 py-[2px]'>
                                                 <GoCheckCircleFill />
                                             </div> :
-                                            <MdRadioButtonUnchecked />
+                                            <div className='py-[2px]'>
+                                                <MdRadioButtonUnchecked />
+                                            </div>
                                     }
-
-
                                     <p>{element[4].title}</p>
-
                                 </li>
 
                             </ul>
-
                         </div>
                     }
                 </div>
@@ -325,9 +288,8 @@ export const UpdatePassword = () => {
 
                     <button type='submit'
                         className='text-center w-full bg-yellow-50 
-                    text-richblack-9 p-3 mx-auto rounded-lg'
-                        onClick={!passwordUpdated?submitHandler : ()=>navigate("/login")}
-                    >
+                            text-richblack-9 p-3 mx-auto rounded-lg'
+                        onClick={!passwordUpdated ? submitHandler : () => navigate("/login")}>
 
                         <p className='text-richblack-900 font-medium text-base'>
                             {
@@ -336,7 +298,6 @@ export const UpdatePassword = () => {
                                     "Return login"
                             }
                         </p>
-
                     </button>
 
                     <button className='flex items-center
@@ -344,17 +305,12 @@ export const UpdatePassword = () => {
                         onClick={() => navigate("/login")}>
 
                         <BsArrowLeft />
-
                         <p>
                             Back
                         </p>
-
                     </button>
-
                 </div>
-
             </div>
-
         </div>
     )
 }

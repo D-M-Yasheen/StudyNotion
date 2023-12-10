@@ -1,8 +1,8 @@
-import { toast } from "react-hot-toast";
-import { setLoading, setToken } from "../../slices/authSlice";
-import { setUser } from "../../slices/profileSlice";
-import { apiConnector } from "../apiconnector";
 import { authEndpoints } from "../apis";
+import { toast } from "react-hot-toast";
+import { apiConnector } from "../apiconnector";
+import { setUser } from "../../slices/profileSlice";
+import { setLoading, setToken } from "../../slices/authSlice";
 
 
 const {
@@ -68,7 +68,7 @@ export const signUp = (userData, navigate) => {
         confirmPassword, accountType } = userData
 
 
-      const response = await apiConnector("POST", SIGNUP_API, {
+      await apiConnector("POST", SIGNUP_API, {
         accountType, firstName, lastName, email, otp, password, confirmPassword
       })
 
@@ -82,7 +82,7 @@ export const signUp = (userData, navigate) => {
 
       toast.dismiss()
 
-      console.log("ERROR OCCURED... ", error)
+      // console.log("ERROR OCCURED... ", error)
 
       toast.error(error?.message)
 
@@ -154,7 +154,7 @@ export const sendResetPasswordEmail = (email, setMailSend) => {
 
       toast.loading("Please wait for your email")
 
-      const response = await apiConnector("POST",
+      await apiConnector("POST",
         RESETPASSWORD_TOKEN_API, { email });
 
       setMailSend(true);
@@ -186,7 +186,7 @@ export const updatePassword = (password, confirmPassword, token, setPasswordUpda
 
     try {
 
-      const response = await apiConnector("POST", RESETPASSWORD_API,
+      await apiConnector("POST", RESETPASSWORD_API,
         { password, confirmPassword, token })
 
 
@@ -226,8 +226,6 @@ export const logout = (navigate) => {
     toast.success("Logged out");
 
     navigate("/");
-
-
   }
 } 
 
