@@ -66,18 +66,14 @@ export const ShowCards = ({ showCards, highlightedCards, setHighlightedCards }) 
             </div>
 
             {/* Buttons */}
-            <div className='flex lg:items-center space-x-6 mx-auto mt-8 gap-4 justify-center'>
-                <div className='w-fit'>
-                    <CTAButton active={true} linkto={"/signup"}>
-                        <p>Explore Full Catalog</p>
-                    </CTAButton>
-                </div>
+            <div className='w-full flex min-[425px]:flex-row flex-col  gap-4 justify-center'>
+                <CTAButton active={true} linkto={"/signup"}>
+                    <p>Explore Full Catalog</p>
+                </CTAButton>
 
-                <div className='w-fit'>
-                    <CTAButton active={false} linkto={"/login"}>
-                        <p>Learn More</p>
-                    </CTAButton>
-                </div>
+                <CTAButton active={false} linkto={"/login"}>
+                    <p>Learn More</p>
+                </CTAButton>
             </div>
         </section>
     )

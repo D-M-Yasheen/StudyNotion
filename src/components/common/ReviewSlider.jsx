@@ -9,6 +9,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import ReactStars from "react-rating-stars-component";
 import { fetchAllReviewAndRatings } from '../../services/operations/courseAPI';
 
+import { Autoplay } from 'swiper/modules';
+
+
 export const ReviewSlider = () => {
     const [review, setReview] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -46,6 +49,11 @@ export const ReviewSlider = () => {
                                     loop={true}
                                     slidesPerView={1}
                                     spaceBetween={30}
+                                    autoplay={{
+                                        delay: 2000,
+                                        disableOnInteraction: false,
+                                    }}
+                                    modules={[Autoplay]}
                                     breakpoints={{
                                         400: {
                                             // width: 576,

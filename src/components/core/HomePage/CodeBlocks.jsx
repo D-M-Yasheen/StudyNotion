@@ -4,7 +4,7 @@ import { CTAButton } from './CTAButton'
 import { FaArrowRight } from 'react-icons/fa'
 import { TypeAnimation } from 'react-type-animation'
 
-const num = [1,2,3,4,5,6,7,8,9,10,11,12]
+const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 export const CodeBlocks = ({
     position,
@@ -27,29 +27,27 @@ export const CodeBlocks = ({
                     {subheading}
                 </div>
 
-                <div className='w-full flex gap-6'>
-                    <div className='w-fit'>
-                        <CTAButton
-                            active={ctabtn1.active}
-                            linkto={ctabtn1.linkto}>
-                            <div className='flex gap-2 items-center justify-center'>
-                                <div>
-                                    {ctabtn1.btnText}
-                                </div>
-                                <FaArrowRight />
-                            </div>
-                        </CTAButton>
-                    </div>
+                <div className='w-full flex min-[425px]:flex-row flex-col gap-6'>
 
-                    <div className='w-fit'>
-                        <CTAButton
-                            active={ctabtn2.active}
-                            linkto={ctabtn2.linkto}>
-                            <p>
-                                {ctabtn2.btnText}
-                            </p>
-                        </CTAButton>
-                    </div>
+                    <CTAButton
+                        active={ctabtn1.active}
+                        linkto={ctabtn1.linkto}>
+                        <div className='flex gap-2 items-center justify-center'>
+                            <div>
+                                {ctabtn1.btnText}
+                            </div>
+                            <FaArrowRight />
+                        </div>
+                    </CTAButton>
+
+                    <CTAButton
+                        active={ctabtn2.active}
+                        linkto={ctabtn2.linkto}>
+                        <p>
+                            {ctabtn2.btnText}
+                        </p>
+                    </CTAButton>
+
                 </div>
             </div>
 
@@ -61,11 +59,11 @@ export const CodeBlocks = ({
 
                 <div className='text-center flex items-center font-inter font-bold
                         flex-col text-sm w-[10%] text-richblack-400 gap-x-2'>
-                            {
-                                num.map((ele, index) => (
-                                    <p key={index}>{ele}</p>
-                                ))
-                            }
+                    {
+                        num.map((ele, index) => (
+                            <p key={index}>{ele}</p>
+                        ))
+                    }
                 </div>
 
                 <div className={`font-bold w-[90%] flex flex-col lg:gap-2 
@@ -78,7 +76,7 @@ export const CodeBlocks = ({
                             {
                                 whiteSpace: "pre-line",
                                 display: "block",
-                                fontSize:"1rem"
+                                fontSize: "1rem"
                             }
                         }
                         omitDeletionAnimation={true}

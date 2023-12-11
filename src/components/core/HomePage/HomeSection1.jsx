@@ -69,7 +69,9 @@ export const HomeSection1 = () => {
                     </p>
                 </div>
 
-                <div className='flex flex-row gap-7 mt-8'>
+                <div className='w-full flex min-[425px]:flex-row flex-col gap-7 mt-8
+                 justify-center'>
+
                     <CTAButton
                         active={true}
                         linkto={"/signup"}>
@@ -85,13 +87,13 @@ export const HomeSection1 = () => {
             </div>
 
             {/* Video */}
-            <video className='mx-auto my-12 w-full lg:w-9/12 aspect-video shadow-custom'
+            <video className='mx-auto my-12 w-[98%] lg:w-9/12 aspect-video shadow-custom'
                 muted loop autoPlay>
                 <source src={Banner} type='video/mp4' />
             </video>
 
             {/* Code Block Section 1 */}
-            <div className='w-full mx-auto my-12 py-16'>
+            <div className='w-full flex flex-col gap-20 mx-auto mb-20'>
                 <CodeBlocks
                     position={"lg:flex-row flex-col"}
                     heading={
@@ -139,10 +141,8 @@ export const HomeSection1 = () => {
                             </body>
                             </html>`
                     } />
-            </div>
 
-            {/* Code Block Section 2 */}
-            <div className='w-full mx-auto my-12 py-16'>
+                {/* Code Block Section 2 */}
                 <CodeBlocks
                     position={"lg:flex-row-reverse flex-col"}
                     heading={
@@ -210,10 +210,10 @@ export const HomeSection1 = () => {
                 </div>
 
                 {/* Tabs */}
-                <div className='flex lg:flex-col md:flex-col lg:items-center md:items-center
+                <div className='flex flex-col lg:items-center md:items-center
                 items-start mx-auto'>
 
-                    <ul className='flex lg:flex-row md:flex-row flex-col items-center gap-2 w-fit rounded-full my-8 py-2 
+                    <ul className='flex flex-wrap justify-around items-center gap-2 w-fit rounded-full my-8 py-2 
                     lg:px-4 md:px-4 px-2 bg-richblack-800'>
 
                         {
@@ -245,7 +245,7 @@ export const HomeSection1 = () => {
                 </div>
             </div>
             <div className=' h-24'></div>
-            
+
         </section>
     )
 }

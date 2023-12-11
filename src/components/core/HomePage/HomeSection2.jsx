@@ -50,10 +50,11 @@ export const HomeSection2 = () => {
                         <p className=' font-medium text-base font-inter mb-9 pr-12'>
                             The modern StudyNotion is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                         </p>
-
-                        <CTAButton active={true} linkto={"/signup"} >
-                            Learn More
-                        </CTAButton>
+                        <div className='w-full min-[425px]:w-fit'>
+                            <CTAButton active={true} linkto={"/signup"} >
+                                Learn More
+                            </CTAButton>
+                        </div>
                     </div>
                 </div>
 

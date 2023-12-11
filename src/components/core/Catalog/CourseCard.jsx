@@ -18,7 +18,8 @@ export const CourseCard = ({ Course }) => {
   return (
     <Link to={`/course/${Course?._id}`}>
 
-      <div className='w-full flex flex-col gap-5 select-none'>
+      <div className='w-full flex flex-col gap-5 select-none rounded-xl
+      px-3 py-4 hover:bg-richblack-800 transition-all duration-200'>
 
         <img src={Course.thumbnail} className='w-full aspect-video rounded-lg' />
 

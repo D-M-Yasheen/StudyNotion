@@ -116,7 +116,7 @@ export const Catalog = () => {
                                 Top courses in {category?.name}
                             </h1>
 
-                            <div >
+                            <div>
                                 {
                                     catalogPageData?.mostSellingCourses ?
                                         <CourseSlider Courses={catalogPageData?.mostSellingCourses} />

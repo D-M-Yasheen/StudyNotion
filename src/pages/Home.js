@@ -20,7 +20,7 @@ export const Home = () => {
     useEffect(() => {
         setLoading(false)
     }, [])
-    
+
     return (
         <>
             {

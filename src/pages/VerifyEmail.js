@@ -32,7 +32,7 @@ export const VerifyEmail = () => {
 
                     <CustomLoader />
                     :
-                    <div className='w-[510px] mt-40 mx-auto'>
+                    <div className='max-w-[510px] mt-40 mx-auto'>
 
                         <div className='flex flex-col justify-start items-center p-8 gap-y-6'>
 
@@ -50,15 +50,16 @@ export const VerifyEmail = () => {
 
                             <div className='w-full'>
 
-                                <OTPInput containerStyle={`w-full flex justify-between`}
+                                <OTPInput containerStyle={`w-full flex gap-3 justify-around`}
                                     inputStyle={`bg-richblack-800 rounded-lg text-center py-1
                                         text-richblack-5 text-4xl font-medium border-richblack-700 
-                                        border-b-2`}
+                                        border-b-2 w-full`}
 
                                     value={otp}
                                     onChange={setOtp}
                                     numInputs={6}
                                     inputType='tel'
+                                    shouldAutoFocus='true'
                                     renderInput={(props) => <input {...props} />}
                                 />
 
