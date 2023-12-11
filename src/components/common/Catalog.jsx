@@ -21,7 +21,7 @@ export const Catalog = ({ showDropDown = true, setShowDropDown }) => {
     }, [])
 
     return (
-        <div className={` mt-5 absolute bg-richblack-5 capitalize w-full
+        <div className={`mt-5 absolute bg-richblack-5 capitalize w-full
                 left-[50%] top-[100%] -translate-x-[50%] p-4 flex flex-col gap-2 
                 origin-top-left z-10 rounded-lg transition-all duration-[1000ms] 
                 group-hover:visible group-hover:opacity-100 group-hover:scale-y-100 

@@ -15,7 +15,7 @@ export const SideBar = ({ showSideBar, setShowSideBar }) => {
     const { user } = useSelector((state) => state.profile)
 
     return (
-        <div className={`relative h-full w-full bg-richblack-800 
+        <div className={`relative h-full w-full bg-richblack-800
                 flex flex-col items-start gap-3 py-6 transition-all duration-200`}>
 
             <div className='w-full flex justify-end'>
