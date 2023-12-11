@@ -1,19 +1,38 @@
-import React from 'react'
+import toast from 'react-hot-toast';
+import React, { useEffect, useState } from 'react'
 import loginImg from "../assets/Images/login.webp"
 import { Template } from '../components/core/Auth/Template'
 
 export const Login = () => {
+    const [loading, setLoading] = useState(true);
+    (() => {
+        if (loading) {
+            var toastId = toast.loading('Loading...')
+        }
+        else {
+            toast.dismiss(toastId)
+        }
+    })();
+    useEffect(() => {
+        setLoading(false)
+    }, [])
     return (
-        <div className='w-full mt-24'>
-            <Template
-                heading={"Welcome Back"}
-                description={"Build skills for today, tomorrow, and beyond."}
-                highlightDescription={" Education to future-proof your career."}
-                formType={"login"}
-                btn={"Sign in"}
-                img={loginImg}
-            />
-        </div>
-
+        <>
+            {
+                loading ?
+                    <div className='h-0'></div>
+                    :
+                    <div className='w-full mt-24'>
+                        <Template
+                            heading={"Welcome Back"}
+                            description={"Build skills for today, tomorrow, and beyond."}
+                            highlightDescription={" Education to future-proof your career."}
+                            formType={"login"}
+                            btn={"Sign in"}
+                            img={loginImg}
+                        />
+                    </div>
+            }
+        </>
     )
 }

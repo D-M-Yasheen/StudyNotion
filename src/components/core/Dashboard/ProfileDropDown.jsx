@@ -52,10 +52,10 @@ export const ProfileDropDown = () => {
 
                 <NavLink to="/" onClick={() => setShowDropDown((prev) => !prev)}>
 
-                    <button className='lg:hidden md:hidden flex justify-start items-center w-full 
-                                gap-2 px-3 py-2 text-sm text-richblack-100 
-                                transition-all duration-200 select-none rounded-xl
-                                hover:bg-richblack-700 hover:text-richblack-25 '>
+                    <button className='lg:hidden md:hidden flex justify-start items-center 
+                    w-full gap-2 px-3 py-2 text-sm text-richblack-100 transition-all 
+                    duration-200 select-none rounded-xl hover:bg-richblack-700 
+                    hover:text-richblack-25 '>
 
                         <IoHome className='text-lg' />
 
@@ -82,16 +82,16 @@ export const ProfileDropDown = () => {
                 </NavLink>
 
                 <button className='relative flex lg:hidden md:hidden justify-start items-center
-                            w-full gap-2 px-3 py-2 text-sm text-richblack-100 group
-                            transition-all duration-200 select-none rounded-xl
-                            hover:bg-richblack-700 hover:text-richblack-25 '>
+                        w-full gap-2 px-3 py-2 text-sm text-richblack-100 group transition-all 
+                        rounded-xl hover:bg-richblack-700 hover:text-richblack-25 duration-200 
+                        select-none'>
 
                     <BiSolidCategory className='text-lg group-hover:rotate-180 transition-all 
                                         duration-200' />
 
                     <p> Catalog </p>
                     <div className='absolute w-[200px] right-[100%] -top-[200%]'>
-                        <Catalog />
+                        <Catalog showDropDown={showDropDown} setShowDropDown={setShowDropDown} />
                     </div>
 
                 </button>

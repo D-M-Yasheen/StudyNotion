@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
 import { CartTable } from './CartTable'
 import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { CustomLoader } from '../../../common/CustomLoader'
 import { buyCourse } from '../../../../services/operations/studentFeatureAPI'
 
 export const Cart = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const { token } = useSelector((state) => state.auth)
     const { user } = useSelector((state) => state.profile)
     const { cart, totalItems, total } = useSelector((state) => state.cart);
@@ -19,12 +20,14 @@ export const Cart = () => {
         }
     }
 
+    useEffect(() => {
+        setLoading(false)
+    }, [])
+
     return (
         <>{
             loading ?
-                <div className='w-full h-screen flex justify-center items-center'>
-                    <div className='custom-loader'></div>
-                </div>
+                <CustomLoader />
                 :
                 <div className='w-11/12 mx-auto flex flex-col gap-10 my-10'>
 
@@ -78,7 +81,7 @@ export const Cart = () => {
                                         {
                                             cart.map((course, index) => (
                                                 <div key={index}>
-                                                    <CartTable  course={course} />
+                                                    <CartTable course={course} />
                                                     <>
                                                         {
                                                             index < cart.length - 1 &&

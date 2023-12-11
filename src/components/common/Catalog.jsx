@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { MdKeyboardArrowDown } from "react-icons/md"
 import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
 import { fetchCourseCategories } from '../../services/operations/courseAPI';
 
-export const Catalog = () => {
+export const Catalog = ({ showDropDown = true, setShowDropDown }) => {
     const [catalogData, setCatalogData] = useState([])
     const catalogHandler = async () => {
         try {
@@ -26,7 +25,7 @@ export const Catalog = () => {
                 left-[50%] top-[100%] -translate-x-[50%] p-4 flex flex-col gap-2 
                 origin-top-left z-10 rounded-lg transition-all duration-[1000ms] 
                 group-hover:visible group-hover:opacity-100 group-hover:scale-y-100 
-                invisible opacity-0 scale-y-0`}>
+                invisible opacity-0 scale-y-0 ${showDropDown ? 'flex' : 'hidden'}`}>
 
             <div className='lg:flex md:flex hidden absolute left-[50%] top-[2px]
                 translate-x-[72%] translate-y-[-45%] h-6 w-6 -z-10
@@ -36,7 +35,9 @@ export const Catalog = () => {
             {
                 catalogData.length > 0 ? (
                     catalogData.map((course) => (
-                        <NavLink key={course._id} to={`/catalog/${course.name.split(" ").join("-").toLowerCase()}`}>
+                        <NavLink key={course._id}
+                            to={`/catalog/${course.name.split(" ").join("-").toLowerCase()}`}
+                            onClick={() => setShowDropDown((prev) => !prev)}>
 
                             <div className='flex justify-start items-center w-full 
                                     gap-x-1 px-8 py-4 text-sm text-richblack-900 

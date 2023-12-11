@@ -51,7 +51,6 @@ export const AboutCourse = () => {
         }
     }, [courseId])
 
-
     const handlerBuyCourse = async () => {
         if (token) {
             await buyCourse(token, [courseDetails], user, navigate, dispatch)
@@ -93,169 +92,171 @@ export const AboutCourse = () => {
 
     return (
         <div>
-            {loading ? <CustomLoader /> :
+            {
+                loading ?
+                    <CustomLoader />
+                    :
+                    <>
+                        {/* Heading and Payment Card */}
 
-                <>
-                    {/* Heading and Payment Card */}
-
-                    <header className='relative w-full bg-richblack-800'>
-                        <div className=' mx-auto lg:w-4/5 w-10/12 flex 
+                        <header className='relative w-full bg-richblack-800'>
+                            <div className=' mx-auto lg:w-4/5 w-10/12 flex 
                                 flex-col items-start gap-6 py-16'>
 
-                            <div className='flex flex-col gap-4'>
-                                <h1 className=' items-stretch text-richblack-5 text-4xl font-bold'>
-                                    {courseDetails?.courseName}
-                                </h1>
+                                <div className='flex flex-col gap-4'>
+                                    <h1 className=' items-stretch text-richblack-5 text-4xl font-bold'>
+                                        {courseDetails?.courseName}
+                                    </h1>
 
-                                <p className='lg:w-1/2 w-full items-stretch text-richblack-200 text-lg font-normal'>
-                                    {courseDetails?.courseDescription}
-                                </p>
+                                    <p className='lg:w-1/2 w-full items-stretch text-richblack-200 text-lg font-normal'>
+                                        {courseDetails?.courseDescription}
+                                    </p>
 
-                                {/* Rating and Review */}
-                                <div className='flex flex-col gap-1 text-sm'>
-                                    <div className='flex gap-2 justify-start items-center text-yellow-100 
+                                    {/* Rating and Review */}
+                                    <div className='flex flex-col gap-1 text-sm'>
+                                        <div className='flex gap-2 justify-start items-center text-yellow-100 
                                     font-semibold text-lg'>
-                                        <p>{`${parseInt(avgRatingStar)}.0` || `0.0`}</p>
-                                        <RatingStars Review_Count={avgRatingStar} />
-                                    </div>
+                                            <p>{`${parseInt(avgRatingStar)}.0` || `0.0`}</p>
+                                            <RatingStars Review_Count={avgRatingStar} />
+                                        </div>
 
-                                    <div className='flex flex-wrap gap-2 justify-start items-start 
+                                        <div className='flex flex-wrap gap-2 justify-start items-start 
                                             text-richblack-25 text-sm'>
-                                        <p>{`${courseDetails?.ratingAndReviews?.length} reviews`}</p>
-                                        <p>{`${courseDetails?.studentsEnrolled?.length} student(s) enrolled`}</p>
+                                            <p>{`${courseDetails?.ratingAndReviews?.length} reviews`}</p>
+                                            <p>{`${courseDetails?.studentsEnrolled?.length} student(s) enrolled`}</p>
+                                        </div>
                                     </div>
-                                </div>
 
-                                {/* Instructor name */}
-                                <p className='text-richblack-5 text-lg'>
-                                    {`Created by ${courseDetails?.instructor?.firstName} ${courseDetails?.instructor?.lastName}`}
-                                </p>
+                                    {/* Instructor name */}
+                                    <p className='text-richblack-5 text-lg'>
+                                        {`Created by ${courseDetails?.instructor?.firstName} ${courseDetails?.instructor?.lastName}`}
+                                    </p>
 
-                                <div className='flex gap-3 lg:flex-row md:flex-row sm:flex-row
+                                    <div className='flex gap-3 lg:flex-row md:flex-row sm:flex-row
                                 xs:flex-col flex-col text-start items-start text-richblack-5 text-sm'>
 
-                                    <div className='flex gap-2 justify-center items-start'>
-                                        <div className='py-[3px]'>
-                                            <MdOutlineInfo fontSize={14} />
-                                        </div>
-                                        <span>
-                                            Created at: {formatDate(courseDetails?.createAt?.toString())}
-                                        </span>
-                                    </div>
-
-                                    <div className='flex gap-2 justify-center items-center'>
-                                        <MdLanguage />
-                                        <span>English</span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            {/* course payment card for medium and small screen */}
-                            <div className='w-full lg:hidden flex flex-col border-y-[1px] 
-                                    border-richblack-500 py-8 gap-6'>
-
-                                <p className=' items-stretch font-bold text-3xl text-richblack-5'>
-                                    Rs. {courseDetails?.price}
-                                </p>
-
-                                <div className='flex flex-col gap-3'>
-
-
-                                    <button onClick={courseDetails?.studentsEnrolled.includes(user?._id) ?
-                                        () => navigate("/dashboard/enrolled-courses") : handlerBuyCourse}
-                                        className='bg-yellow-50 flex py-3 px-6 items-center justify-center rounded-lg 
-                                            text-richblack-900 font-medium'>
-                                        {courseDetails?.studentsEnrolled.includes(user?._id) ? "Go To Course" : "Buy Now"}
-                                    </button>
-
-                                    <>
-                                        {!courseDetails?.studentsEnrolled.includes(user?._id) &&
-                                            <button onClick={handleAddToCart}
-                                                className='flex py-3 px-6 items-center justify-center rounded-lg 
-                                                    text-richblack-5 font-medium'>
-                                                Add To Cart
-                                            </button>
-                                        }
-                                    </>
-                                </div>
-                            </div>
-
-                            {/* Course Payment Card for large screen */}
-
-                            <div className='lg:flex hidden absolute xl:right-0 left-[66%] top-8'>
-                                <CourseDetailCard courseDetails={courseDetails} handlerBuyCourse={handlerBuyCourse} handleAddToCart={handleAddToCart} />
-                            </div>
-
-                        </div>
-
-                    </header>
-
-                    <div className='lg:w-[70%] w-full flex flex-col items-start 
-                            gap-8 py-6 text-richblack-5 lg:px-10'>
-
-                        {/* What you will learn */}
-                        <section className='mx-auto w-4/5 p-8 flex flex-col items-start
-                                    gap-3 border-[1px] border-richblack-700'>
-
-                            <p className=' text-richblack-5 text-3xl font-medium'>
-                                What you'll learn
-                            </p>
-
-                            <ul className='flex flex-col gap-2'>
-                                {
-                                    courseDetails?.whatYouWillLearn
-                                    &&
-                                    courseDetails?.whatYouWillLearn?.split('\r\n').map((data, index) => (
-                                        <li key={index}
-                                            className='flex justify-start items-start text-richblack-50 
-                                                text-sm font-medium gap-2'>
-
-                                            <div className=''>
-                                                {"\u2022"}
+                                        <div className='flex gap-2 justify-center items-start'>
+                                            <div className='py-[3px]'>
+                                                <MdOutlineInfo fontSize={14} />
                                             </div>
                                             <span>
-                                                {data}
+                                                Created at: {formatDate(courseDetails?.createAt?.toString())}
                                             </span>
-                                        </li>
-                                    ))
-                                }
-                            </ul>
+                                        </div>
 
-                        </section>
+                                        <div className='flex gap-2 justify-center items-center'>
+                                            <MdLanguage />
+                                            <span>English</span>
+                                        </div>
 
-                        {/* Course Content */}
-                        <section className='mx-auto w-4/5 py-8 flex flex-col items-start gap-4'>
-                            <ShowLecture courseContent={courseDetails?.courseContent} />
-                        </section>
+                                    </div>
+                                </div>
 
-                        {/* About Instructor */}
-                        <section className='mx-auto w-4/5 py-8 flex flex-col items-start
-                                    gap-3 text-richblack-5'>
+                                {/* course payment card for medium and small screen */}
+                                <div className='w-full lg:hidden flex flex-col border-y-[1px] 
+                                    border-richblack-500 py-8 gap-6'>
 
-                            <p className=' text-3xl font-semibold'>
-                                Author
-                            </p>
+                                    <p className=' items-stretch font-bold text-3xl text-richblack-5'>
+                                        Rs. {courseDetails?.price}
+                                    </p>
 
-                            <div className='flex items-center justify-center gap-3'>
-                                <img src={courseDetails?.instructor?.image}
-                                    className='w-[3.5rem] rounded-full' />
+                                    <div className='flex flex-col gap-3'>
 
-                                <p className=' font-medium text-lg'>
-                                    {`${courseDetails?.instructor?.firstName} ${courseDetails?.instructor?.lastName}`}
-                                </p>
+
+                                        <button onClick={courseDetails?.studentsEnrolled.includes(user?._id) ?
+                                            () => navigate("/dashboard/enrolled-courses") : handlerBuyCourse}
+                                            className='bg-yellow-50 flex py-3 px-6 items-center justify-center rounded-lg 
+                                            text-richblack-900 font-medium'>
+                                            {courseDetails?.studentsEnrolled.includes(user?._id) ? "Go To Course" : "Buy Now"}
+                                        </button>
+
+                                        <>
+                                            {!courseDetails?.studentsEnrolled.includes(user?._id) &&
+                                                <button onClick={handleAddToCart}
+                                                    className='flex py-3 px-6 items-center justify-center rounded-lg 
+                                                    text-richblack-5 font-medium'>
+                                                    Add To Cart
+                                                </button>
+                                            }
+                                        </>
+                                    </div>
+                                </div>
+
+                                {/* Course Payment Card for large screen */}
+
+                                <div className='lg:flex hidden absolute xl:right-0 left-[66%] top-8'>
+                                    <CourseDetailCard courseDetails={courseDetails} handlerBuyCourse={handlerBuyCourse} handleAddToCart={handleAddToCart} />
+                                </div>
+
                             </div>
 
-                            <p className=' text-richblack-400 text-sm'>
-                                {courseDetails?.instructor?.additionalDetails?.about}
-                            </p>
-                        </section>
-                    </div >
+                        </header>
 
-                    <Footer />
+                        <div className='lg:w-[70%] w-full flex flex-col items-start 
+                            gap-8 py-6 text-richblack-5 lg:px-10'>
 
-                    {confirmationModal && <Modal modalData={confirmationModal} />}
-                </>
+                            {/* What you will learn */}
+                            <section className='mx-auto w-4/5 p-8 flex flex-col items-start
+                                    gap-3 border-[1px] border-richblack-700'>
+
+                                <p className=' text-richblack-5 text-3xl font-medium'>
+                                    What you'll learn
+                                </p>
+
+                                <ul className='flex flex-col gap-2'>
+                                    {
+                                        courseDetails?.whatYouWillLearn
+                                        &&
+                                        courseDetails?.whatYouWillLearn?.split('\r\n').map((data, index) => (
+                                            <li key={index}
+                                                className='flex justify-start items-start text-richblack-50 
+                                                text-sm font-medium gap-2'>
+
+                                                <div className=''>
+                                                    {"\u2022"}
+                                                </div>
+                                                <span>
+                                                    {data}
+                                                </span>
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+
+                            </section>
+
+                            {/* Course Content */}
+                            <section className='mx-auto w-4/5 py-8 flex flex-col items-start gap-4'>
+                                <ShowLecture courseContent={courseDetails?.courseContent} />
+                            </section>
+
+                            {/* About Instructor */}
+                            <section className='mx-auto w-4/5 py-8 flex flex-col items-start
+                                    gap-3 text-richblack-5'>
+
+                                <p className=' text-3xl font-semibold'>
+                                    Author
+                                </p>
+
+                                <div className='flex items-center justify-center gap-3'>
+                                    <img src={courseDetails?.instructor?.image}
+                                        className='w-[3.5rem] rounded-full' />
+
+                                    <p className=' font-medium text-lg'>
+                                        {`${courseDetails?.instructor?.firstName} ${courseDetails?.instructor?.lastName}`}
+                                    </p>
+                                </div>
+
+                                <p className=' text-richblack-400 text-sm'>
+                                    {courseDetails?.instructor?.additionalDetails?.about}
+                                </p>
+                            </section>
+                        </div >
+
+                        <Footer />
+
+                        {confirmationModal && <Modal modalData={confirmationModal} />}
+                    </>
             }
         </div>
     )
