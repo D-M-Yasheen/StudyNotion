@@ -53,7 +53,7 @@ exports.createCourse = async (req, res) => {
             })
         }
 
-        if (!status || status === undefined) {
+        if (!status || status === null) {
             status = "Draft";
         }
 
